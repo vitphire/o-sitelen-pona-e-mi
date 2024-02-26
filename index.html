@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ijo pi sitelen nimi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>o sitelen pona e mi!</h1>
+    <h2>show potential glyph options for a toki pona name in sitelen pona</h2>
+    <div class="name-input-container" id="name-input-container">
+        <label for="name-text-box">input your name here for options</label>
+        <div class="text-box-container" id="textBoxContainer">
+            <input type="text" id="name-text-box" class="text-box"
+                   oninput="validateInput();"
+                   size="2" placeholder="jan Sonja"/>
+            <div class="status" id="status-text"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "sitelen-seli-kiwen--asuki";
+    src: url("sitelen seli kiwen/sitelenselikiwenasuki.ttf") format("truetype");
+}
+@font-face {
+    font-family: "sitelen-seli-kiwen--juniko";
+    src: url("sitelen seli kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
+}
+
+:root {
+    --bg-color: #f6e7cb;
+    --input-bg-color: #f6d0cb;
+    --pastel-green: #74d3ae;
+    --pastel-red: #dd9787;
+}
+
+html, body {
+    background: var(--bg-color);
+}
+
+.container {
+    margin: 32px 32px;
+}
+
+h1, h2, p, label, .status {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+
+h1, h2 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+.name-input-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.name-input-container label {
+    font-weight: 300;
+    font-size: 24px;
+}
+.name-input-container .text-box-container {
+    margin: 12px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.text-box {
+    border: 3px solid;
+    border-radius: 24px;
+    padding: 12px 0 12px 18px;
+    height: fit-content;
+    background: var(--input-bg-color);
+    font-family: "sitelen-seli-kiwen--juniko", serif;
+    font-size: 30px;
+    min-width: 3em;
+}
+
+.valid .text-box {border-color: var(--pastel-green);}
+
+.invalid .text-box {border-color: var(--pastel-red);}
+
+.status {
+    font-size: 32px;
+    margin: 12px;
+}
+
+.valid .status {
+    color: var(--pastel-green);
+}
+
+.invalid .status{
+    color: var(--pastel-red);
+}

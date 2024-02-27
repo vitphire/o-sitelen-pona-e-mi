@@ -22,7 +22,7 @@ html, body {
     margin: 32px 32px;
 }
 
-h1, h2, p, label, span, .status {
+h1, h2, p, label, span, #status-text {
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -37,18 +37,18 @@ h1 {
     font-size: 2.4em;
 }
 
-.name-input-container {
+#name-input-container {
     margin: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
-.name-input-container label {
+#name-input-container label {
     font-weight: 300;
     font-size: 24px;
 }
-.name-input-container .text-box-container {
+#name-input-container .text-box-container {
     margin: 12px 0;
     display: flex;
     flex-direction: row;
@@ -73,16 +73,16 @@ h1 {
 
 .invalid .text-box {border-color: var(--pastel-red);}
 
-.status {
+#status {
     font-size: 32px;
     margin: 12px;
 }
 
-.valid .status {
+.valid #status {
     color: var(--pastel-green);
 }
 
-.invalid .status{
+.invalid #status{
     color: var(--pastel-red);
 }
 
@@ -106,9 +106,37 @@ h1 {
     font-size: 24px;
 }
 
-.noun-and-name {
-    margin: 12px 0;
+#name-container {
+    position: relative;
+    z-index: 2;
+    margin: 18px 0;
+}
+
+#noun-and-name, .name-letter {
     font-family: "sitelen-seli-kiwen-mono--asuki", serif;
     font-size: 64px;
     white-space: nowrap;
+}
+
+#noun, #name-outline {
+    font: inherit;
+    display: inline;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: red;
+}
+
+.name-letter {
+    --border-width: 4px;
+    position: absolute;
+    top: calc(0px - var(--border-width));
+    left: calc(2.25em - var(--border-width) + .9em * var(--letter-index));
+    border: var(--border-width) solid black;
+    border-radius: 18px;
+    box-sizing: border-box;
+    margin: 0;
+    background-color: var(--letter-color);
+    z-index: -1;
 }

@@ -68,10 +68,19 @@ function validate_text(text) {
     let rest = text.substring(starting_glyph.length + 1);
     const regex = /^((^[aeiou]|[pksmnl][aeiou]|[jt][aeou]|w[aei])([mn](?![mn]))?)+$/;
     return (rest.length > 0
-        &&rest[0] === rest[0].toUpperCase()
+        && rest[0] === rest[0].toUpperCase()
         && rest.substring(1) === rest.substring(1).toLowerCase()
         && regex.test(rest.toLowerCase())
     )
 }
 
 document.addEventListener('DOMContentLoaded', validateInput);
+
+function get_pastel_color() {
+    const colors = [
+        'A6374B', '6C3570', '4B4073',
+        '2D4F94', '0D688C', '3A9E7A',
+        'A4BF8A', 'BD9A5C', 'C26747',
+    ]
+    return colors[Math.floor(Math.random() * colors.length)];
+}

@@ -13,25 +13,33 @@
 <div class="container">
     <h1>o sitelen pona e mi!</h1>
     <h2>show potential glyph options for a toki pona name in sitelen pona</h2>
-    <div class="name-input-container" id="name-input-container">
+    <div id="name-input-container">
         <label for="name-text-box">input your name here for options</label>
-        <div class="text-box-container" id="textBoxContainer">
+        <div class="text-box-container">
             <input type="text" id="name-text-box" class="text-box"
                    oninput="validateInput();"
                    size="2" placeholder="jan Sonja"/>
-            <div class="status" id="status-text"></div>
+            <div id="status-text"></div>
         </div>
-        <div class="results-container" id="results-container">
-            <div class="glyph-select-container" id="glyph-select-container">
+        <div class="results-container">
+            <div class="glyph-select-container">
                 <span>select glyphs from the list</span>
-                <div class="noun-and-name" id="noun-and-name">
-                    jan [ko olin monsuta insa]<br>
-                    &nbsp; &nbsp; ko olin &nbsp; insa<br>
-                    &nbsp; &nbsp; &nbsp; olin monsuta insa<br>
-                    jan [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                <div id="name-container">
+                    <div id="noun-and-name">
+                        <br><div id="noun">jan</div>
+                        <div id="name-outline">[ko olin monsuta insa ]</div>
+                    </div>
+                    <div class="name-letter" style="--letter-index: 0; --letter-color: #A4BF8A;"
+                    >ken<br>ko<br>kasi<br>kepeken</div>
+                    <div class="name-letter" style="--letter-index: 1; --letter-color: #A6374B;"
+                    >o<br>olin<br>ona<br>open</div>
+                    <div class="name-letter" style="--letter-index: 2; --letter-color: #0D688C;"
+                    >ma<br>monsuta<br>ma<br>mu</div>
+                    <div class="name-letter" style="--letter-index: 3; --letter-color: #4B4073;"
+                    >ijo<br>insa<br>ike<br>ilo</div>
                 </div>
             </div>
-            <div class="definition-container" id="definition-container">
+            <div id="definition-container">
                 TODO definition container
             </div>
         </div>

@@ -1,66 +1,136 @@
-function update_name_letters() {
+const visible_glyph_count = 4;
+const selected_glyph_index = 1;
+let scrolling = 0;
+
+const letter_colors = [
+    '#A4BF8A', '#A6374B', '#0D688C',
+    '#4B4073', '#3A9E7A', '#C26747',
+    '#2D4F94', '#BD9A5C', '#6C3570',
+]
+
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
+
+function show_outline_letters() {
     const nameOutline = document.getElementById('name-outline');
-    const nameLetters = document.getElementById('name-container')
+    const nameLetters = document.getElementById('glyph-selector')
         .querySelectorAll('.name-letter');
-    let nameOutlineText = '[';
+    let nameOutlineText = "";
     for (let i = 0; i < nameLetters.length; i++) {
         let letter = nameLetters[i];
         let glyphEls = letter.querySelectorAll('.glyph');
-        let selected = parseInt(letter.style.getPropertyValue('--letter-selected'));
-        let glyph = glyphEls[selected +1];
+        let scroll_pos = parseInt(letter.style.getPropertyValue('--letter-scroll'));
+        let glyph = glyphEls[scroll_pos + selected_glyph_index];
         nameOutlineText += glyph.textContent + ' ';
     }
-    nameOutlineText += ']';
-    nameOutline.textContent = nameOutlineText;
+    nameOutline.textContent = '[' + nameOutlineText + ']';
+}
+
+function hide_outline_letters() {
+    const nameOutline = document.getElementById('name-outline');
+    const nameLetters = document.getElementById('glyph-selector')
+        .querySelectorAll('.name-letter');
+    nameOutline.textContent = '[' + '  '.repeat(nameLetters.length) + ' ]'
+}
+
+function scrollLetter(nameLetter, number) {
+    let selected = parseInt(nameLetter.style.getPropertyValue('--letter-scroll'));
+    const option_count = parseInt(nameLetter.style.getPropertyValue('--letter-glyph-count'));
+    let scroll_from, scroll_to;
+    if (number >= 0) {
+        scroll_from = mod(selected, option_count);
+        scroll_to = scroll_from + number;
+    } else {
+        scroll_to = mod(selected + number, option_count);
+        scroll_from = scroll_to - number;
+    }
+    if (scroll_from !== selected) {
+        nameLetter.style.setProperty('--anim-multiplier', '0');
+        nameLetter.style.setProperty('--letter-scroll', scroll_from.toString());
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                nameLetter.style.setProperty('--anim-multiplier', '1');
+                nameLetter.style.setProperty('--letter-scroll', scroll_to.toString());
+            });
+        });
+    } else {
+        nameLetter.style.setProperty('--letter-scroll', scroll_to.toString());
+    }
+
+
+    hide_outline_letters();
+    scrolling++;
+    setTimeout(() => {
+        scrolling--;
+        if (scrolling === 0) {
+            show_outline_letters();
+        }
+    }, 200);
 }
 
 function set_letters(letters) {
-    const nameContainer = document.getElementById('name-container');
+    const nameContainer = document.getElementById('glyph-selector');
+
+    // remove existing letters
     let els = nameContainer.querySelectorAll('.name-letter');
     els.forEach(el => {
         el.remove();
     });
 
+    // for each letter
     for (let i = 0; i < letters.length; i++) {
         const letter = letters[i];
-        // create element to hold the letter glyphs
-        let nameLetter = document.createElement('div');
+        let glyphs = [];
+        // get all glyph options that start with the letter
         for (let definition of definitions.entries()) {
             const [glyph, _] = definition;
             if (glyph.startsWith(letter)) {
-                let glyphElement = document.createElement('div');
-                glyphElement.classList.add('glyph');
-                glyphElement.textContent = glyph;
-                nameLetter.appendChild(glyphElement);
+                glyphs.push(glyph);
             }
+        }
+
+        // add padding for infinite scroll
+        const padding = visible_glyph_count - 1;
+        const glyph_count = glyphs.length;
+        for (let j = 0; j < padding * 2; j++) {
+            glyphs.push(glyphs[mod(j, glyph_count)]);
+        }
+
+        let nameLetter = document.createElement('div');
+        let nameLetterScroll = document.createElement('div');
+        nameLetter.appendChild(nameLetterScroll);
+        // for each glyph (option)
+        for (let j = 0; j < glyphs.length; j++) {
+            let glyph = glyphs[j];
+            let glyphElement = document.createElement('div');
+            glyphElement.classList.add('glyph');
+            glyphElement.textContent = glyph;
+            glyphElement.onclick = function () {
+                let scroll_pos = parseInt(nameLetter.style.getPropertyValue(
+                    '--letter-scroll'));
+                scrollLetter(nameLetter, j - scroll_pos - selected_glyph_index);
+            }
+            nameLetterScroll.appendChild(glyphElement);
         }
         nameLetter.classList.add('name-letter');
         nameLetter.style.setProperty('--letter-index', i.toString());
-        nameLetter.style.setProperty('--letter-color', letter_colors[i % letter_colors.length]);
-        nameLetter.style.setProperty('--letter-selected', '0');
+        nameLetter.style.setProperty('--letter-bg-color', letter_colors[i % letter_colors.length]);
+        nameLetter.style.setProperty('--letter-scroll', padding.toString());
+        nameLetter.style.setProperty('--letter-glyph-count', glyph_count.toString());
+        nameLetter.onwheel = function (e) {
+            e.preventDefault();
+            scrollLetter(nameLetter, Math.sign(e.deltaY));
+        }
         nameContainer.appendChild(nameLetter);
     }
 
-    update_name_letters();
+    show_outline_letters();
 }
 
-function onInputChange() {
-    const textBox = document.getElementById('name-text-box');
-    const statusText = document.getElementById('status-text');
-    const textBoxContainer = document.getElementById('name-input-container');
-
-    textBox.size = Math.max(4, textBox.value.length);
-    const [valid, length] = validate_text(textBox.value);
-    if (valid) {
-        statusText.textContent = 'Valid!';
-        textBoxContainer.classList.add('valid');
-        textBoxContainer.classList.remove('invalid');
-        set_letters(textBox.value.substring(length).toLowerCase());
-    } else {
-        statusText.textContent = 'Invalid!';
-        textBoxContainer.classList.add('invalid');
-        textBoxContainer.classList.remove('valid');
-    }
+function set_noun(s) {
+    const noun = document.getElementById('noun');
+    noun.textContent = s;
 }
 
 function validate_text(text) {
@@ -110,7 +180,7 @@ function validate_text(text) {
         }
     }
     if (!valid) {
-        return false;
+        return [false, 0];
     }
     let rest = text.substring(starting_glyph.length + 1);
     const regex = /^((^[aeiou]|[pksmnl][aeiou]|[jt][aeou]|w[aei])([mn](?![mn]))?)+$/;
@@ -122,13 +192,31 @@ function validate_text(text) {
     ]
 }
 
-document.addEventListener('DOMContentLoaded', onInputChange);
+function onInputChange() {
+    const textBox = document.getElementById('name-text-box');
+    const statusText = document.getElementById('status-text');
+    const textBoxContainer = document.getElementById('name-input-container');
 
-const letter_colors = [
-    '#A4BF8A', '#A6374B', '#0D688C',
-    '#4B4073', '#3A9E7A', '#C26747',
-    '#2D4F94', '#BD9A5C', '#6C3570',
-]
+    textBox.size = Math.max(4, textBox.value.length);
+    const [valid, length] = validate_text(textBox.value);
+    if (valid) {
+        statusText.textContent = 'Valid!';
+        textBoxContainer.classList.add('valid');
+        textBoxContainer.classList.remove('invalid');
+        set_noun(textBox.value.substring(0, length));
+        set_letters(textBox.value.substring(length).toLowerCase());
+    } else {
+        statusText.textContent = 'Invalid!';
+        textBoxContainer.classList.add('invalid');
+        textBoxContainer.classList.remove('valid');
+        console.log(textBox.value);
+        if (textBox.value === "") {
+            set_letters("sonja");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', onInputChange);
 
 const definitions = new Map(Object.entries({
     "a": "(emphasis, emotion or confirmation)",

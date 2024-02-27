@@ -10,43 +10,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
+<main>
     <h1>o sitelen pona e mi!</h1>
     <h2>show potential glyph options for a toki pona name in sitelen pona</h2>
     <div id="name-input-container">
-        <label for="name-text-box">input your name here for options</label>
+        <label for="name-text-box" class="lexend">input your name here for options</label>
         <div class="text-box-container">
-            <input type="text" id="name-text-box" class="text-box"
+            <input type="text" id="name-text-box"
                    oninput="onInputChange();"
                    size="2" placeholder="jan Sonja"/>
-            <div id="status-text"></div>
-        </div>
-        <div class="results-container">
-            <div class="glyph-select-container">
-                <span>select glyphs from the list</span>
-                <div id="name-container">
-                    <div id="noun-and-name">
-                        <br><div id="noun">jan</div><pre id="name-outline">[ko olin monsuta insa ]</pre>
-                    </div>
-                    <div class="name-letter" style="--letter-index: 0;
-                    --letter-color: #A4BF8A; --letter-selected: 0"
-                    ><div>ken<br>ko<br>kasi<br>kepeken</div></div>
-                    <div class="name-letter" style="--letter-index: 1;
-                    --letter-color: #A6374B; --letter-selected: 0"
-                    ><div>o<br>olin<br>ona<br>open</div></div>
-                    <div class="name-letter" style="--letter-index: 2;
-                    --letter-color: #0D688C; --letter-selected: 0"
-                    ><div>mama<br>monsuta<br>ma<br>mu</div></div>
-                    <div class="name-letter" style="--letter-index: 3;
-                    --letter-color: #4B4073; --letter-selected: 0"
-                    ><div>ijo<br>insa<br>ike<br>ilo</div></div>
-                </div>
-            </div>
-            <div id="definition-container">
-                TODO definition container
-            </div>
+            <div id="status-text" class="lexend"></div>
         </div>
     </div>
-</div>
+    <div class="results-container">
+        <div class="glyph-select-section">
+            <div class="lexend">select glyphs from the list</div>
+            <div id="glyph-selector">
+                <br>
+                <div id="noun-and-name">
+                    <div id="noun" class="no-select">jan</div><pre id="name-outline"></pre>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <div id="definitions-section">
+            <div class="lexend">word definitions</div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

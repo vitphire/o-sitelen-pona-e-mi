@@ -1,151 +1,153 @@
 @font-face {
-    font-family: "sitelen-seli-kiwen-mono--asuki";
-    src: url("sitelen seli kiwen/sitelenselikiwenmonoasuki.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen-mono--asuki";
+  src: url("sitelen seli kiwen/sitelenselikiwenmonoasuki.ttf") format("truetype");
 }
 @font-face {
-    font-family: "sitelen-seli-kiwen--juniko";
-    src: url("sitelen seli kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen--juniko";
+  src: url("sitelen seli kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
+}
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 :root {
-    --bg-color: #f6e7cb;
-    --input-bg-color: #f6d0cb;
-    --pastel-green: #74d3ae;
-    --pastel-red: #dd9787;
+  --bg-color: #f6e7cb;
+  --input-bg-color: #f6d0cb;
+  --pastel-green: #74d3ae;
+  --pastel-red: #e5705b;
 }
 
 html, body {
-    background: var(--bg-color);
+  background: var(--bg-color);
 }
 
-.container {
-    margin: 32px 32px;
+main {
+  margin: 32px 32px;
 }
 
-h1, h2, p, label, span, #status-text {
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    letter-spacing: 0.05em;
+h1, h2, p, .lexend {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 0.05em;
 }
 
-h1, h2 {
-    font-weight: 400;
+h2 {
+  font-weight: 400;
 }
 
 h1 {
-    font-size: 2.4em;
+  font-weight: 400;
+  font-size: 2.4em;
 }
 
 #name-input-container {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 #name-input-container label {
-    font-weight: 300;
-    font-size: 24px;
+  font-weight: 300;
+  font-size: 24px;
 }
 #name-input-container .text-box-container {
-    margin: 12px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
-
-.text-box {
-    border: 3px solid;
-    border-radius: 24px;
-    padding: 12px 0 12px 18px;
-    height: fit-content;
-    background: var(--input-bg-color);
-    font-family: "sitelen-seli-kiwen--juniko", serif;
-    font-size: 30px;
-    min-width: 3em;
+#name-input-container #name-text-box {
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 24px;
+  padding: 12px 0 12px 18px;
+  height: fit-content;
+  background: var(--input-bg-color);
+  font-family: "sitelen-seli-kiwen--juniko", serif;
+  font-size: 30px;
+  min-width: 3em;
 }
-
-.valid .text-box {border-color: var(--pastel-green);}
-
-.invalid .text-box {border-color: var(--pastel-red);}
-
-#status-text {
-    font-size: 32px;
-    margin: 12px;
+#name-input-container #status-text {
+  font-size: 32px;
+  margin: 12px;
 }
-
-.valid #status-text {
-    color: var(--pastel-green);
+#name-input-container.valid #name-text-box {
+  border-color: var(--pastel-green);
 }
-
-.invalid #status-text {
-    color: var(--pastel-red);
+#name-input-container.valid #status-text {
+  color: var(--pastel-green);
+}
+#name-input-container.invalid #name-text-box {
+  border-color: var(--pastel-red);
+}
+#name-input-container.invalid #status-text {
+  color: var(--pastel-red);
 }
 
 .results-container {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.results-container .glyph-select-section, .results-container #definitions-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.results-container .glyph-select-section .lexend, .results-container #definitions-section .lexend {
+  font-weight: 300;
+  font-size: 24px;
+}
+.results-container #glyph-selector {
+  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+  font-size: 64px;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  margin: 18px 0;
+}
+.results-container #glyph-selector #noun, .results-container #glyph-selector #name-outline {
+  font: inherit;
+  display: inline;
+  color: red;
+}
+.results-container #glyph-selector .name-letter {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  --letter-index: 0;
+  --letter-bg-color: red;
+  --letter-scroll: 0;
+  --anim-multiplier: 1;
+  position: absolute;
+  --border-width: 4px;
+  border: var(--border-width) solid black;
+  border-radius: 18px;
+  top: calc(0px - var(--border-width));
+  left: calc(0.9em * (var(--letter-index) + 2) - var(--border-width));
+  box-sizing: border-box;
+  margin: 0;
+  background-color: var(--letter-bg-color);
+  width: 1em;
+  height: 4.7916666667em;
+  overflow: hidden;
+  z-index: -1;
+}
+.results-container #glyph-selector .name-letter > div {
+  transition: transform calc(0.2s * var(--anim-multiplier)) ease-in-out;
+  transform: translateY(calc(-1.1979166667em * var(--letter-scroll)));
 }
 
-.glyph-select-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.glyph-select-container span {
-    font-weight: 300;
-    font-size: 24px;
-}
-
-#name-container {
-    position: relative;
-    z-index: 2;
-    margin: 18px 0;
-}
-
-#noun-and-name, .name-letter {
-    font-family: "sitelen-seli-kiwen-mono--asuki", serif;
-    font-size: 64px;
-    white-space: nowrap;
-}
-
-#noun, #name-outline {
-    font: inherit;
-    display: inline;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: red;
-}
-
-.name-letter {
-    --border-width: 4px;
-    position: absolute;
-    top: calc(0px - var(--border-width));
-    left: calc(.9em * (var(--letter-index) + 2) - var(--border-width));
-    border: var(--border-width) solid black;
-    border-radius: 18px;
-    box-sizing: border-box;
-    margin: 0;
-    background-color: var(--letter-color);
-    width: 1em;
-    height: calc(4em * (115 / 96));
-    overflow: hidden;
-    z-index: -1;
-}
-
-.name-letter > div {
-    --anim-multiplier: 0;
-    transition: transform calc(0.2s * var(--anim-multiplier)) ease-in-out;
-    transform: translateY(calc(1em * (115 / 96) * var(--letter-selected)));
-}
+/*# sourceMappingURL=styles.css.map */

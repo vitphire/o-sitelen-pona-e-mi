@@ -132,11 +132,20 @@ h1 {
     --border-width: 4px;
     position: absolute;
     top: calc(0px - var(--border-width));
-    left: calc(2.25em - var(--border-width) + .9em * var(--letter-index));
+    left: calc(.9em * (var(--letter-index) + 2) - var(--border-width));
     border: var(--border-width) solid black;
     border-radius: 18px;
     box-sizing: border-box;
     margin: 0;
     background-color: var(--letter-color);
+    width: 1em;
+    height: calc(4em * (115 / 96));
+    overflow: hidden;
     z-index: -1;
+}
+
+.name-letter > div {
+    --anim-multiplier: 0;
+    transition: transform calc(0.2s * var(--anim-multiplier)) ease-in-out;
+    transform: translateY(calc(1em * (115 / 96) * var(--letter-selected)));
 }

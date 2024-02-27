@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "sitelen-seli-kiwen--asuki";
-    src: url("sitelen seli kiwen/sitelenselikiwenasuki.ttf") format("truetype");
+    font-family: "sitelen-seli-kiwen-mono--asuki";
+    src: url("sitelen seli kiwen/sitelenselikiwenmonoasuki.ttf") format("truetype");
 }
 @font-face {
     font-family: "sitelen-seli-kiwen--juniko";
@@ -22,7 +22,7 @@ html, body {
     margin: 32px 32px;
 }
 
-h1, h2, p, label, .status {
+h1, h2, p, label, span, .status {
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -84,4 +84,31 @@ h1 {
 
 .invalid .status{
     color: var(--pastel-red);
+}
+
+.results-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.glyph-select-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.glyph-select-container span {
+    font-weight: 300;
+    font-size: 24px;
+}
+
+.noun-and-name {
+    margin: 12px 0;
+    font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+    font-size: 64px;
+    white-space: nowrap;
 }

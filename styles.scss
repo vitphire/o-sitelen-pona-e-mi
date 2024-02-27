@@ -118,6 +118,8 @@ h1 {
   }
 
   #glyph-selector {
+    @include no-select;
+
     font-family: "sitelen-seli-kiwen-mono--asuki", serif;
     font-size: 64px;
     white-space: nowrap;
@@ -129,12 +131,9 @@ h1 {
     #noun, #name-outline {
       font: inherit;
       display: inline;
-      color: red;
     }
 
     .name-letter {
-      @include no-select;
-
       --letter-index: 0;
       --letter-bg-color: red;
       --letter-scroll: 0;
@@ -145,10 +144,10 @@ h1 {
       --border-width: 4px;
       border: var(--border-width) solid black;
       border-radius: 18px;
-      top: calc(0px - var(--border-width));
-      left: calc(.9em * (var(--letter-index) + 2) - var(--border-width));
+      top: 0;
+      left: calc(.9em * (var(--letter-index) + 2));
       box-sizing: border-box;
-      margin: 0;
+      margin: calc(0px - var(--border-width));
       background-color: var(--letter-bg-color);
       width: 1em; height: calc(4em * (115 / 96));
       overflow: hidden;

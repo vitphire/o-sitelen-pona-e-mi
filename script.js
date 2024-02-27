@@ -1,6 +1,6 @@
 const visible_glyph_count = 4;
 const selected_glyph_index = 1;
-let scrolling = 0;
+/*let scrolling = 0;*/
 
 const letter_colors = [
     '#A4BF8A', '#A6374B', '#0D688C',
@@ -12,6 +12,7 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
+/*
 function show_outline_letters() {
     const nameOutline = document.getElementById('name-outline');
     const nameLetters = document.getElementById('glyph-selector')
@@ -26,8 +27,9 @@ function show_outline_letters() {
     }
     nameOutline.textContent = '[' + nameOutlineText + ']';
 }
+*/
 
-function hide_outline_letters() {
+function resize_outline() {
     const nameOutline = document.getElementById('name-outline');
     const nameLetters = document.getElementById('glyph-selector')
         .querySelectorAll('.name-letter');
@@ -59,7 +61,8 @@ function scrollLetter(nameLetter, number) {
     }
 
 
-    hide_outline_letters();
+    resize_outline();
+    /*
     scrolling++;
     setTimeout(() => {
         scrolling--;
@@ -67,6 +70,7 @@ function scrollLetter(nameLetter, number) {
             show_outline_letters();
         }
     }, 200);
+    */
 }
 
 function set_letters(letters) {
@@ -125,7 +129,8 @@ function set_letters(letters) {
         nameContainer.appendChild(nameLetter);
     }
 
-    show_outline_letters();
+    /*show_outline_letters();*/
+    resize_outline();
 }
 
 function set_noun(s) {

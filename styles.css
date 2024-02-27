@@ -110,6 +110,10 @@ h1 {
   font-size: 24px;
 }
 .results-container #glyph-selector {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-family: "sitelen-seli-kiwen-mono--asuki", serif;
   font-size: 64px;
   white-space: nowrap;
@@ -120,13 +124,8 @@ h1 {
 .results-container #glyph-selector #noun, .results-container #glyph-selector #name-outline {
   font: inherit;
   display: inline;
-  color: red;
 }
 .results-container #glyph-selector .name-letter {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   --letter-index: 0;
   --letter-bg-color: red;
   --letter-scroll: 0;
@@ -135,10 +134,10 @@ h1 {
   --border-width: 4px;
   border: var(--border-width) solid black;
   border-radius: 18px;
-  top: calc(0px - var(--border-width));
-  left: calc(0.9em * (var(--letter-index) + 2) - var(--border-width));
+  top: 0;
+  left: calc(0.9em * (var(--letter-index) + 2));
   box-sizing: border-box;
-  margin: 0;
+  margin: calc(0px - var(--border-width));
   background-color: var(--letter-bg-color);
   width: 1em;
   height: 4.7916666667em;

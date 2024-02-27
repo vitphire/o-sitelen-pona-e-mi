@@ -73,16 +73,16 @@ h1 {
 
 .invalid .text-box {border-color: var(--pastel-red);}
 
-#status {
+#status-text {
     font-size: 32px;
     margin: 12px;
 }
 
-.valid #status {
+.valid #status-text {
     color: var(--pastel-green);
 }
 
-.invalid #status{
+.invalid #status-text {
     color: var(--pastel-red);
 }
 

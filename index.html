@@ -17,7 +17,7 @@
         <label for="name-text-box">input your name here for options</label>
         <div class="text-box-container">
             <input type="text" id="name-text-box" class="text-box"
-                   oninput="validateInput();"
+                   oninput="onInputChange();"
                    size="2" placeholder="jan Sonja"/>
             <div id="status-text"></div>
         </div>
@@ -26,19 +26,19 @@
                 <span>select glyphs from the list</span>
                 <div id="name-container">
                     <div id="noun-and-name">
-                        <br><div id="noun">jan</div><div id="name-outline">[ko olin monsuta insa ]</div>
+                        <br><div id="noun">jan</div><pre id="name-outline">[ko olin monsuta insa ]</pre>
                     </div>
                     <div class="name-letter" style="--letter-index: 0;
-                    --letter-color: #A4BF8A; --letter-count: 4; --letter-selected: 0"
+                    --letter-color: #A4BF8A; --letter-selected: 0"
                     ><div>ken<br>ko<br>kasi<br>kepeken</div></div>
                     <div class="name-letter" style="--letter-index: 1;
-                    --letter-color: #A6374B; --letter-count: 4; --letter-selected: 0"
+                    --letter-color: #A6374B; --letter-selected: 0"
                     ><div>o<br>olin<br>ona<br>open</div></div>
                     <div class="name-letter" style="--letter-index: 2;
-                    --letter-color: #0D688C; --letter-count: 4; --letter-selected: 0"
-                    ><div>ma<br>monsuta<br>ma<br>mu</div></div>
+                    --letter-color: #0D688C; --letter-selected: 0"
+                    ><div>mama<br>monsuta<br>ma<br>mu</div></div>
                     <div class="name-letter" style="--letter-index: 3;
-                    --letter-color: #4B4073; --letter-count: 4; --letter-selected: 0"
+                    --letter-color: #4B4073; --letter-selected: 0"
                     ><div>ijo<br>insa<br>ike<br>ilo</div></div>
                 </div>
             </div>

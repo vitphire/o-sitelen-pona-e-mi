@@ -3,6 +3,10 @@
   src: url("sitelen seli kiwen/sitelenselikiwenmonoasuki.ttf") format("truetype");
 }
 @font-face {
+  font-family: "sitelen-seli-kiwen--asuki";
+  src: url("sitelen seli kiwen/sitelenselikiwenasuki.ttf") format("truetype");
+}
+@font-face {
   font-family: "sitelen-seli-kiwen--juniko";
   src: url("sitelen seli kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
 }
@@ -114,6 +118,7 @@ h1 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  pointer-events: none;
   font-family: "sitelen-seli-kiwen-mono--asuki", serif;
   font-size: 64px;
   white-space: nowrap;
@@ -145,6 +150,7 @@ h1 {
   z-index: -1;
 }
 .results-container #glyph-selector .name-letter > div {
+  pointer-events: auto;
   transition: transform calc(0.2s * var(--anim-multiplier)) ease-in-out;
   transform: translateY(calc(-1.1979166667em * var(--letter-scroll)));
 }

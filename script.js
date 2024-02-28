@@ -110,9 +110,7 @@ function set_letters(letters) {
             let glyphElement = document.createElement('div');
             glyphElement.classList.add('glyph');
             glyphElement.textContent = glyph;
-            console.log(glyphElement.textContent)
             glyphElement.onclick = function () {
-                console.log(glyphElement.textContent)
                 let scroll_pos = parseInt(nameLetter.style.getPropertyValue(
                     '--letter-scroll'));
                 scrollLetter(nameLetter, j - scroll_pos - selected_glyph_index);

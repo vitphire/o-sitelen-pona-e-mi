@@ -186,18 +186,3 @@ h1 {
     }
   }
 }
-
-.width-test {
-  /*
-  Used to test the width of strings,
-  only temporarily exists in the DOM
-  */
-
-  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
-  position: fixed;
-  top: 0; left: 0;
-  //visibility: hidden;
-  display: inline-block;
-  font-size: 64px;
-  white-space: nowrap;
-}

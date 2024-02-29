@@ -156,18 +156,4 @@ h1 {
   transform: translateY(calc(-1.1979166667em * var(--letter-scroll)));
 }
 
-.width-test {
-  /*
-  Used to test the width of strings,
-  only temporarily exists in the DOM
-  */
-  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  font-size: 64px;
-  white-space: nowrap;
-}
-
 /*# sourceMappingURL=styles.css.map */

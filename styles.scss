@@ -4,14 +4,15 @@
 }
 
 @font-face {
-    font-family: "sitelen-seli-kiwen--asuki";
-    src: url("sitelen seli kiwen/sitelenselikiwenasuki.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen--asuki";
+  src: url("sitelen seli kiwen/sitelenselikiwenasuki.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "sitelen-seli-kiwen--juniko";
   src: url("sitelen seli kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
 }
+
 
 @mixin no-select {
   -webkit-user-select: none;
@@ -20,7 +21,9 @@
   user-select: none;
 }
 
-.no-select {@include no-select;}
+.no-select {
+  @include no-select;
+}
 
 :root {
   --bg-color: #f6e7cb;
@@ -92,18 +95,28 @@ h1 {
   }
 
   &.valid {
-    #name-text-box {border-color: var(--pastel-green);}
-    #status-text {color: var(--pastel-green);}
+    #name-text-box {
+      border-color: var(--pastel-green);
+    }
+
+    #status-text {
+      color: var(--pastel-green);
+    }
   }
 
   &.invalid {
-    #name-text-box {border-color: var(--pastel-red);}
-    #status-text {color: var(--pastel-red);}
+    #name-text-box {
+      border-color: var(--pastel-red);
+    }
+
+    #status-text {
+      color: var(--pastel-red);
+    }
   }
 }
 
 .results-container {
-  margin: 20px 0;
+  margin: 20px 0 0 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -133,7 +146,7 @@ h1 {
 
     position: relative;
     z-index: 2;
-    margin: 18px 0;
+    margin: 18px 0 0 0;
 
     #noun, #name-outline {
       font: inherit;
@@ -146,6 +159,8 @@ h1 {
       --letter-scroll: 0;
       --anim-multiplier: 1;
 
+      pointer-events: auto;
+
       position: absolute;
 
       --border-width: 4px;
@@ -156,15 +171,33 @@ h1 {
       box-sizing: border-box;
       margin: calc(0px - var(--border-width));
       background-color: var(--letter-bg-color);
-      width: 1em; height: calc(4em * (115 / 96));
-      overflow: hidden;
+      width: 1em;
+      height: calc(4em * (115 / 96));
+      //  overflow: hidden;
       z-index: -1;
 
       & > div {
-        pointer-events: auto;
-        transition: transform calc(.2s * var(--anim-multiplier)) ease-in-out;
+        //transition: transform calc(.2s * var(--anim-multiplier)) ease-in-out;
+        transition-property: transform;
+        transition-duration: calc(.2s * var(--anim-multiplier));
+        transition-timing-function: ease-in-out;
         transform: translateY(calc(-1em * (115 / 96) * var(--letter-scroll)));
       }
     }
   }
+}
+
+.width-test {
+  /*
+  Used to test the width of strings,
+  only temporarily exists in the DOM
+  */
+
+  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+  position: fixed;
+  top: 0; left: 0;
+  //visibility: hidden;
+  display: inline-block;
+  font-size: 64px;
+  white-space: nowrap;
 }

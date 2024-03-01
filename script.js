@@ -8,7 +8,7 @@ const selected_glyph_index = 1;
 
 const letter_bg_colors = [
     '#A4BF8A', '#C7576B', '#0E7EAA',
-    '#7A6EA7', '#3A9E7A', '#C26747',
+    '#7D73B0', '#3A9E7A', '#C26747',
     '#4C75C8', '#BD9A5C', '#AE5CB2',
 ]
 

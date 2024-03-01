@@ -1,9 +1,21 @@
 const selected_glyph_index = 1;
 
-const letter_colors = [
+/* Original color set (adjusted for contrast)
     '#A4BF8A', '#A6374B', '#0D688C',
     '#4B4073', '#3A9E7A', '#C26747',
-    '#2D4F94', '#BD9A5C', '#6C3570',
+    '#2D4F94', '#BD9A5C', '#6C3570'
+ */
+
+const letter_bg_colors = [
+    '#A4BF8A', '#C7576B', '#0E7EAA',
+    '#7D73B0', '#3A9E7A', '#C26747',
+    '#4C75C8', '#BD9A5C', '#AE5CB2',
+]
+
+const letter_colors = [
+    '#3C741B', '#A6374B', '#0D688C',
+    '#4B4073', '#297056', '#954C32',
+    '#2D4F94', '#775F31', '#6C3570',
 ]
 
 function mod(n, m) {
@@ -167,7 +179,7 @@ function set_letters(letters) {
         nameLetter.classList.add('name-letter');
         nameLetter.style.setProperty('--letter-index', i.toString());
         nameLetter.letter_index = i;
-        nameLetter.style.setProperty('--letter-bg-color', letter_colors[i % letter_colors.length]);
+        nameLetter.style.setProperty('--letter-bg-color', letter_bg_colors[i % letter_bg_colors.length]);
         nameLetter.style.setProperty('--letter-glyph-count', glyphs.length.toString());
         nameLetter.letter_glyph_count = glyphs.length;
 

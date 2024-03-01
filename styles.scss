@@ -13,7 +13,6 @@
   src: url("sitelen seli kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
 }
 
-
 @mixin no-select {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -157,7 +156,9 @@ h1 {
       --letter-index: 0;
       --letter-bg-color: red;
       --letter-scroll: 0;
-      --anim-multiplier: 1;
+      --letter-glyph-count: 1;
+
+      --glyph-height: calc(1.2em);
 
       pointer-events: auto;
 
@@ -172,16 +173,17 @@ h1 {
       margin: calc(0px - var(--border-width));
       background-color: var(--letter-bg-color);
       width: 1em;
-      height: calc(4em * (115 / 96));
-      //  overflow: hidden;
+      height: calc(4 * var(--glyph-height));
+      overflow: hidden;
       z-index: -1;
 
       & > div {
-        //transition: transform calc(.2s * var(--anim-multiplier)) ease-in-out;
-        transition-property: transform;
-        transition-duration: calc(.2s * var(--anim-multiplier));
-        transition-timing-function: ease-in-out;
-        transform: translateY(calc(-1em * (115 / 96) * var(--letter-scroll)));
+        transform: translateY(calc(0px - var(--glyph-height) * var(--letter-scroll)));
+        height: calc(var(--glyph-height) * var(--letter-glyph-count));
+
+        > .glyph {
+          height: var(--glyph-height);
+        }
       }
     }
   }

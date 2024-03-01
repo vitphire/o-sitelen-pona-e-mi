@@ -1,4 +1,3 @@
-const visible_glyph_count = 4;
 const selected_glyph_index = 1;
 
 const letter_colors = [
@@ -17,8 +16,8 @@ function get_selected_glyphs() {
     let nameSelectedGlyphs = [];
     for (let i = 0; i < nameLetters.length; i++) {
         let letter = nameLetters[i];
-        let glyphEls = letter.querySelectorAll('.glyph');
-        let scroll_pos = parseInt(letter.style.getPropertyValue('--letter-scroll'));
+        let glyphEls = letter.children[0].children;
+        let scroll_pos = scroll_positions[i];
         let glyph = glyphEls[mod(scroll_pos + selected_glyph_index, glyphEls.length)];
         nameSelectedGlyphs.push(glyph.textContent);
     }
@@ -35,15 +34,82 @@ function resize_outline() {
 scroll_positions = []; // used for setting the scroll position of each letter when the name is changed
 
 function scrollLetterBy(nameLetter, number) {
-    const scroll_pos = parseInt(nameLetter.style.getPropertyValue('--letter-scroll'));
-    scrollLetterTo(nameLetter, number + scroll_pos);
+    const scroll_pos = scroll_positions[parseInt(nameLetter.style.getPropertyValue('--letter-index'))];
+    scrollLetterTo(nameLetter, parseInt(scroll_pos) + number);
 }
 
-function scrollLetterTo(nameLetter, number) {
-    nameLetter.style.setProperty('--letter-scroll', number.toString());
-    scroll_positions[parseInt(nameLetter.style.getPropertyValue('--letter-index'))] =
-        number;
+function set_scroll_position_looped(nameLetter, scroll_pos) {
+    nameLetter.current_scroll_pos = scroll_pos;
+    const scroll_pos_mod = mod(scroll_pos, parseInt(nameLetter.style.getPropertyValue('--letter-glyph-count')));
+    nameLetter.style.setProperty('--letter-scroll', scroll_pos_mod);
+}
+
+async function scroll_animation(nameLetter) {
+    // Thank you t3ssel8r
+    // https://youtu.be/KPoeNZZ6H4s
+
+    const letter_index = parseInt(nameLetter.style.getPropertyValue('--letter-index'));
+    const f = 5;
+    const zeta = 1;
+    const r = 0.1;
+
+    const k1 = zeta / (Math.PI * f);
+    const k2 = 1 / (4 * Math.PI * Math.PI * f * f);
+    const k3 = (r * zeta) / (2 * Math.PI * f);
+
+    const epsilon = 0.001;
+
+    //initialization
+    let scroll_pos = nameLetter.current_scroll_pos;
+    let scroll_velocity = 0;
+    let prev_time = performance.now();
+    let prev_x = scroll_pos;
+
+    while (true) {
+        const time = performance.now();
+        const dt = (time - prev_time) * 0.001;
+        prev_time = time;
+
+        const x = scroll_positions[letter_index];
+        const dx = x - prev_x;
+        prev_x = x;
+
+        scroll_pos += scroll_velocity * dt;
+        const scroll_acc = (x + (k3 * dx) - scroll_pos - (k1 * scroll_velocity)) / k2;
+        scroll_velocity += scroll_acc * dt;
+
+        set_scroll_position_looped(nameLetter, scroll_pos);
+
+        if (Math.abs(scroll_velocity) < epsilon && Math.abs(scroll_pos - x) < epsilon) {
+            set_scroll_position_looped(nameLetter, x);
+            break;
+        } else {
+            await new Promise(r => setTimeout(r, 2));
+        }
+    }
+}
+
+function scrollLetterTo(nameLetter, scroll_pos) {
+    const letter_index = parseInt(nameLetter.style.getPropertyValue('--letter-index'));
+    scroll_positions[letter_index] = scroll_pos;
+    if (!nameLetter.is_scrolling) {
+        nameLetter.is_scrolling = true;
+        scroll_animation(nameLetter).then(_ => nameLetter.is_scrolling = false);
+    }
     on_glyph_selection_change();
+}
+
+function scrollLetterToGlyph(nameLetter, glyph) {
+    const glyph_count = nameLetter.letter_glyph_count;
+    const current_scroll = nameLetter.current_scroll_pos;
+    const offset = Math.floor(current_scroll / glyph_count) * glyph_count;
+
+    const glyphs = [].concat(...(Array.from(nameLetter.children)
+        .map((el) => [...el.children])));
+
+    const glyph_index = glyphs.indexOf(glyph);
+    
+    scrollLetterTo(nameLetter, glyph_index - selected_glyph_index + offset);
 }
 
 function set_letters(letters) {
@@ -92,6 +158,22 @@ function set_letters(letters) {
         }
 
         let nameLetter = document.createElement('div');
+
+        while (scroll_positions.length <= i) {
+            // Default scroll position makes the first glyph selected
+            scroll_positions.push((-selected_glyph_index));
+        }
+        nameLetter.classList.add('name-letter');
+        nameLetter.style.setProperty('--letter-index', i.toString());
+        nameLetter.letter_index = i;
+        nameLetter.style.setProperty('--letter-bg-color', letter_colors[i % letter_colors.length]);
+        nameLetter.style.setProperty('--letter-glyph-count', glyphs.length.toString());
+        nameLetter.letter_glyph_count = glyphs.length;
+
+        set_scroll_position_looped(nameLetter, scroll_positions[i]);
+        nameLetter.is_scrolling = false;
+        nameLetter.addEventListener('wheel', on_scroll);
+
         let nameLetterScroll = document.createElement('div');
 
         // for each glyph (option)
@@ -100,33 +182,24 @@ function set_letters(letters) {
             let glyphElement = document.createElement('div');
             glyphElement.classList.add('glyph');
             glyphElement.textContent = glyph;
-            glyphElement.onclick = function () {
-                scrollLetterTo(nameLetter, j - selected_glyph_index);
-            }
             nameLetterScroll.appendChild(glyphElement);
         }
         nameLetter.appendChild(nameLetterScroll.cloneNode(true));
         nameLetter.appendChild(nameLetterScroll);
 
+        nameLetter.querySelectorAll('.glyph').forEach(glyph => {
+            glyph.onclick = () => {
+                scrollLetterToGlyph(nameLetter, glyph);
+            }
+        });
+
         function on_scroll(e) {
-            console.log("scrolling")
             e.preventDefault();
             scrollLetterBy(nameLetter, Math.sign(e.deltaY));
         }
 
-        while (scroll_positions.length <= i) {
-            // Default scroll position makes the first glyph selected
-            scroll_positions.push((-selected_glyph_index).toString());
-        }
-        nameLetter.classList.add('name-letter');
-        nameLetter.style.setProperty('--letter-index', i.toString());
-        nameLetter.style.setProperty('--letter-bg-color', letter_colors[i % letter_colors.length]);
-        nameLetter.style.setProperty('--letter-scroll', scroll_positions[i]);
-        nameLetter.style.setProperty('--letter-glyph-count', glyphs.length.toString());
-        //nameLetter.onwheel = on_scroll;
         nameContainer.appendChild(nameLetter);
 
-        nameLetter.addEventListener('wheel', on_scroll);
         console.log(nameLetter)
     }
     console.log(nameContainer)
@@ -149,11 +222,14 @@ function validate_noun(noun) {
 }
 
 function validate_word(text) {
-    const regex = /^((^[aeiou]|[pksmnl][aeiou]|[jt][aeou]|w[aei])([mn](?![mn]))?)+$/;
-    return (text.length > 0
-        && text[0] === text[0].toUpperCase()
-        && text.substring(1) === text.substring(1).toLowerCase()
-        && regex.test(text.toLowerCase()))
+    if (text.length === 0) {
+        return [false, false];
+    }
+    const regex_valid = /^((^[aeiou]|[pksmnl][aeiou]|[jt][aeou]|w[aei])([mn](?![mn]))?)+$/i;
+    const regex_acceptable = /^[aeiouwpsmnljtk]+$/i;
+    const is_capitalized = (text[0] === text[0].toUpperCase()
+        && text.substring(1) === text.substring(1).toLowerCase());
+    return ([regex_valid.test(text) && is_capitalized, regex_acceptable.test(text)]);
 }
 
 function set_definitions(selectedGlyphs) {
@@ -170,7 +246,7 @@ function on_name_change() {
     const noun = words[0];
     const noun_valid = validate_noun(noun);
     const letters = words.slice(1).join(' ');
-    const letters_valid = validate_word(letters);
+    const [letters_valid, letters_acceptable] = validate_word(letters);
     if (letters_valid && noun_valid) {
         statusText.textContent = 'Valid!';
         textBoxContainer.classList.add('valid');
@@ -183,7 +259,7 @@ function on_name_change() {
     if (noun_valid) {
         set_noun(noun);
     }
-    if (letters_valid) {
+    if (letters_acceptable) {
         set_letters(letters.toLowerCase());
     }
     if (textBox.value === "") {
@@ -194,7 +270,7 @@ function on_name_change() {
 function on_glyph_selection_change() {
     const selectedGlyphs = get_selected_glyphs();
     set_definitions(selectedGlyphs);
-    console.log(selectedGlyphs);
+    //console.log(selectedGlyphs);
 }
 
 document.addEventListener('DOMContentLoaded',

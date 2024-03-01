@@ -134,7 +134,8 @@ h1 {
   --letter-index: 0;
   --letter-bg-color: red;
   --letter-scroll: 0;
-  --anim-multiplier: 1;
+  --letter-glyph-count: 1;
+  --glyph-height: calc(1.2em);
   pointer-events: auto;
   position: absolute;
   --border-width: 4px;
@@ -146,14 +147,16 @@ h1 {
   margin: calc(0px - var(--border-width));
   background-color: var(--letter-bg-color);
   width: 1em;
-  height: 4.7916666667em;
+  height: calc(4 * var(--glyph-height));
+  overflow: hidden;
   z-index: -1;
 }
 .results-container #glyph-selector .name-letter > div {
-  transition-property: transform;
-  transition-duration: calc(0.2s * var(--anim-multiplier));
-  transition-timing-function: ease-in-out;
-  transform: translateY(calc(-1.1979166667em * var(--letter-scroll)));
+  transform: translateY(calc(0px - var(--glyph-height) * var(--letter-scroll)));
+  height: calc(var(--glyph-height) * var(--letter-glyph-count));
+}
+.results-container #glyph-selector .name-letter > div > .glyph {
+  height: var(--glyph-height);
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -76,7 +76,7 @@ h1 {
   background: var(--input-bg-color);
   font-family: "sitelen-seli-kiwen--juniko", serif;
   font-size: 30px;
-  min-width: 3em;
+  min-width: 4em;
 }
 #name-input-container #status-text {
   font-size: 32px;
@@ -102,6 +102,7 @@ h1 {
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
+  gap: 32px;
 }
 .results-container .glyph-select-section, .results-container #definitions-section {
   display: flex;
@@ -161,7 +162,6 @@ h1 {
   height: var(--glyph-height);
 }
 .results-container #definitions-section {
-  margin: 0 0 0 32px;
   flex-grow: 1;
   align-items: flex-start;
 }

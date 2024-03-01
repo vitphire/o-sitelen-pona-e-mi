@@ -85,7 +85,7 @@ h1 {
     background: var(--input-bg-color);
     font-family: "sitelen-seli-kiwen--juniko", serif;
     font-size: 30px;
-    min-width: 3em;
+    min-width: 4em;
   }
 
   #status-text {
@@ -121,6 +121,7 @@ h1 {
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
+  gap: 32px;
 
   .glyph-select-section, #definitions-section {
     display: flex;
@@ -192,7 +193,6 @@ h1 {
   }
 
   #definitions-section {
-    margin: 0 0 0 32px;
     flex-grow: 1;
     align-items: flex-start;
 

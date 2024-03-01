@@ -204,10 +204,7 @@ function set_letters(letters) {
         }
 
         nameContainer.appendChild(nameLetter);
-
-        console.log(nameLetter)
     }
-    console.log(nameContainer)
     resize_outline();
     on_glyph_selection_change();
 }
@@ -259,7 +256,6 @@ function set_definitions(selectedGlyphs) {
 
 function on_name_change() {
     const textBox = document.getElementById('name-text-box');
-    const statusText = document.getElementById('status-text');
     const textBoxContainer = document.getElementById('name-input-container');
 
     textBox.size = Math.max(4, textBox.value.length);
@@ -269,13 +265,17 @@ function on_name_change() {
     const letters = words.slice(1).join(' ');
     const [letters_valid, letters_acceptable] = validate_word(letters);
     if (letters_valid && noun_valid) {
-        statusText.textContent = 'Valid!';
         textBoxContainer.classList.add('valid');
+        textBoxContainer.classList.remove('uncommon');
+        textBoxContainer.classList.remove('invalid');
+    } else if (letters_acceptable && noun_valid) {
+        textBoxContainer.classList.add('uncommon');
+        textBoxContainer.classList.remove('valid');
         textBoxContainer.classList.remove('invalid');
     } else {
-        statusText.textContent = 'Invalid!';
         textBoxContainer.classList.add('invalid');
         textBoxContainer.classList.remove('valid');
+        textBoxContainer.classList.remove('uncommon');
     }
     if (noun_valid) {
         set_noun(noun);

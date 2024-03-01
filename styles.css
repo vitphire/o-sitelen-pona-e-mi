@@ -78,21 +78,42 @@ h1 {
   font-size: 30px;
   min-width: 4em;
 }
-#name-input-container #status-text {
+#name-input-container #status-text--invalid {
+  color: var(--pastel-red);
+}
+#name-input-container #status-text--valid, #name-input-container #status-text--uncommon {
+  color: var(--pastel-green);
+}
+#name-input-container #status-text--valid, #name-input-container #status-text--uncommon, #name-input-container #status-text--invalid {
   font-size: 32px;
   margin: 12px;
 }
-#name-input-container.valid #name-text-box {
+#name-input-container.valid #name-text-box, #name-input-container.uncommon #name-text-box {
   border-color: var(--pastel-green);
 }
-#name-input-container.valid #status-text {
-  color: var(--pastel-green);
+#name-input-container.valid #status-text--invalid, #name-input-container.uncommon #status-text--invalid {
+  display: none;
+}
+#name-input-container.valid #status-text--valid {
+  display: block;
+}
+#name-input-container.valid #status-text--uncommon {
+  display: none;
+}
+#name-input-container.uncommon #status-text--uncommon {
+  display: block;
+}
+#name-input-container.uncommon #status-text--valid {
+  display: none;
 }
 #name-input-container.invalid #name-text-box {
   border-color: var(--pastel-red);
 }
-#name-input-container.invalid #status-text {
-  color: var(--pastel-red);
+#name-input-container.invalid #status-text--invalid {
+  display: block;
+}
+#name-input-container.invalid #status-text--valid, #name-input-container.invalid #status-text--uncommon {
+  display: none;
 }
 
 .results-container {

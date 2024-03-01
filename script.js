@@ -44,14 +44,13 @@ function set_scroll_position_looped(nameLetter, scroll_pos) {
     nameLetter.style.setProperty('--letter-scroll', scroll_pos_mod);
 }
 
-async function scroll_animation(nameLetter) {
+async function scroll_animation(nameLetter, f= 5, zeta= 1, r= 0.1) {
     // Thank you t3ssel8r
     // https://youtu.be/KPoeNZZ6H4s
 
     const letter_index = parseInt(nameLetter.style.getPropertyValue('--letter-index'));
-    const f = 5;
-    const zeta = 1;
-    const r = 0.1;
+
+    const time_scale = 0.001;
 
     const k1 = zeta / (Math.PI * f);
     const k2 = 1 / (4 * Math.PI * Math.PI * f * f);
@@ -67,15 +66,17 @@ async function scroll_animation(nameLetter) {
 
     while (true) {
         const time = performance.now();
-        const dt = (time - prev_time) * 0.001;
+        const dt =  (time - prev_time) * time_scale;
         prev_time = time;
 
         const x = scroll_positions[letter_index];
-        const dx = x - prev_x;
+        const dx =x - prev_x;
         prev_x = x;
 
+        const k2_stable = Math.max(k2, 0.5 * dt * (dt + k1), dt * k1); // clamp k2 to prevent instability
+
         scroll_pos += scroll_velocity * dt;
-        const scroll_acc = (x + (k3 * dx) - scroll_pos - (k1 * scroll_velocity)) / k2;
+        const scroll_acc = (x + (k3 * dx) - scroll_pos - (k1 * scroll_velocity)) / k2_stable;
         scroll_velocity += scroll_acc * dt;
 
         set_scroll_position_looped(nameLetter, scroll_pos);
@@ -84,7 +85,7 @@ async function scroll_animation(nameLetter) {
             set_scroll_position_looped(nameLetter, x);
             break;
         } else {
-            await new Promise(r => setTimeout(r, 2));
+            await new Promise(r => setTimeout(r, 1));
         }
     }
 }

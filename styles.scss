@@ -126,7 +126,6 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
 
     .lexend {
       font-weight: 300;
@@ -134,55 +133,101 @@ h1 {
     }
   }
 
-  #glyph-selector {
-    @include no-select;
+  .glyph-select-section {
+    align-items: center;
 
-    pointer-events: none;
+    #glyph-selector {
+      @include no-select;
 
-    font-family: "sitelen-seli-kiwen-mono--asuki", serif;
-    font-size: 64px;
-    white-space: nowrap;
+      pointer-events: none;
 
-    position: relative;
-    z-index: 2;
-    margin: 18px 0 0 0;
+      font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+      font-size: 64px;
+      white-space: nowrap;
 
-    #noun, #name-outline {
-      font: inherit;
-      display: inline;
+      position: relative;
+      z-index: 2;
+      margin: 18px 0 0 0;
+
+      #noun, #name-outline {
+        font: inherit;
+        display: inline;
+      }
+
+      .name-letter {
+        --letter-index: 0;
+        --letter-bg-color: red;
+        --letter-scroll: 0;
+        --letter-glyph-count: 1;
+
+        --glyph-height: calc(1.2em);
+
+        pointer-events: auto;
+
+        position: absolute;
+
+        --border-width: 4px;
+        border: var(--border-width) solid black;
+        border-radius: 18px;
+        top: 0;
+        left: calc(.9em * (var(--letter-index) + 2));
+        box-sizing: border-box;
+        margin: calc(0px - var(--border-width));
+        background-color: var(--letter-bg-color);
+        width: 1em;
+        height: calc(4 * var(--glyph-height));
+        overflow: hidden;
+        z-index: -1;
+
+        & > div {
+          transform: translateY(calc(0px - var(--glyph-height) * var(--letter-scroll)));
+          height: calc(var(--glyph-height) * var(--letter-glyph-count));
+
+          > .glyph {
+            height: var(--glyph-height);
+          }
+        }
+      }
     }
+  }
 
-    .name-letter {
-      --letter-index: 0;
-      --letter-bg-color: red;
-      --letter-scroll: 0;
-      --letter-glyph-count: 1;
+  #definitions-section {
+    margin: 0 0 0 32px;
+    flex-grow: 1;
+    align-items: flex-start;
 
-      --glyph-height: calc(1.2em);
+    #definitions {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      align-self: stretch;
 
-      pointer-events: auto;
+      &>div {
+        --definition-color: red;
 
-      position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
 
-      --border-width: 4px;
-      border: var(--border-width) solid black;
-      border-radius: 18px;
-      top: 0;
-      left: calc(.9em * (var(--letter-index) + 2));
-      box-sizing: border-box;
-      margin: calc(0px - var(--border-width));
-      background-color: var(--letter-bg-color);
-      width: 1em;
-      height: calc(4 * var(--glyph-height));
-      overflow: hidden;
-      z-index: -1;
+        font-size: 54px;
+        color: var(--definition-color);
 
-      & > div {
-        transform: translateY(calc(0px - var(--glyph-height) * var(--letter-scroll)));
-        height: calc(var(--glyph-height) * var(--letter-glyph-count));
+        .word {
+          font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+        }
 
-        > .glyph {
-          height: var(--glyph-height);
+        .definition {
+          font-family: "sitelen-seli-kiwen--juniko", serif;
+          white-space: nowrap;
+
+          &::before {
+            content: "-";
+            margin-left: 0.2em;
+            margin-right: 0.4em;
+          }
         }
       }
     }

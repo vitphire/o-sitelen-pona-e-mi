@@ -107,13 +107,15 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
 }
 .results-container .glyph-select-section .lexend, .results-container #definitions-section .lexend {
   font-weight: 300;
   font-size: 24px;
 }
-.results-container #glyph-selector {
+.results-container .glyph-select-section {
+  align-items: center;
+}
+.results-container .glyph-select-section #glyph-selector {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -126,11 +128,11 @@ h1 {
   z-index: 2;
   margin: 18px 0 0 0;
 }
-.results-container #glyph-selector #noun, .results-container #glyph-selector #name-outline {
+.results-container .glyph-select-section #glyph-selector #noun, .results-container .glyph-select-section #glyph-selector #name-outline {
   font: inherit;
   display: inline;
 }
-.results-container #glyph-selector .name-letter {
+.results-container .glyph-select-section #glyph-selector .name-letter {
   --letter-index: 0;
   --letter-bg-color: red;
   --letter-scroll: 0;
@@ -151,12 +153,46 @@ h1 {
   overflow: hidden;
   z-index: -1;
 }
-.results-container #glyph-selector .name-letter > div {
+.results-container .glyph-select-section #glyph-selector .name-letter > div {
   transform: translateY(calc(0px - var(--glyph-height) * var(--letter-scroll)));
   height: calc(var(--glyph-height) * var(--letter-glyph-count));
 }
-.results-container #glyph-selector .name-letter > div > .glyph {
+.results-container .glyph-select-section #glyph-selector .name-letter > div > .glyph {
   height: var(--glyph-height);
+}
+.results-container #definitions-section {
+  margin: 0 0 0 32px;
+  flex-grow: 1;
+  align-items: flex-start;
+}
+.results-container #definitions-section #definitions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-self: stretch;
+}
+.results-container #definitions-section #definitions > div {
+  --definition-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  font-size: 54px;
+  color: var(--definition-color);
+}
+.results-container #definitions-section #definitions > div .word {
+  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+}
+.results-container #definitions-section #definitions > div .definition {
+  font-family: "sitelen-seli-kiwen--juniko", serif;
+  white-space: nowrap;
+}
+.results-container #definitions-section #definitions > div .definition::before {
+  content: "-";
+  margin-left: 0.2em;
+  margin-right: 0.4em;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -5,12 +5,12 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <title>ijo pi sitelen nimi</title>
+    <link rel="icon" href="o%20sitelen%20pona.svg" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="styles.css" as="style" type="text/css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/lexend/v19/wlpwgwvFAVdoq2_v-6QU.woff2" as="font">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
     <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf" as="font" type="font/ttf" crossorigin>
@@ -25,13 +25,17 @@
     <h2>show potential glyph options for a toki pona name in sitelen pona</h2>
     <div id="name-input-container">
         <label for="name-text-box" class="lexend">input your name here for options</label>
-        <div class="text-box-container">
-            <span id="name-text-box-size-calibration"></span>
-            <input type="text" id="name-text-box"
-                   oninput="on_name_change();"/>
-            <div id="status-text--valid" class="lexend">Valid!</div>
-            <div id="status-text--uncommon" class="lexend">Uncommon!</div>
-            <div id="status-text--invalid" class="lexend">Invalid</div>
+        <div class="row">
+            <div class="text-box-container">
+                <span id="name-text-box-size-calibration"></span>
+                <input type="text" id="name-text-box"
+                       oninput="onNameChange();"/>
+                <div id="status-text--valid" class="lexend">Valid!</div>
+                <div id="status-text--uncommon" class="lexend">Uncommon!</div>
+                <div id="status-text--invalid" class="lexend">Invalid</div>
+            </div>
+            <button id="reset-button" class="lexend" onclick="resetOptions();">Reset</button>
+            <button id="randomize-button" class="lexend" onclick="randomizeOptions();">Randomize</button>
         </div>
     </div>
     <div class="results-container">
@@ -42,7 +46,7 @@
                 <div id="noun-and-name">
                     <div id="noun" class="no-select">jan</div><pre id="name-outline"></pre>
                 </div>
-                <button id="copy-button" class="lexend" onclick="copy_glyphs(   );">
+                <button id="copy-button" class="lexend" onclick="copyGlyphs(   );">
                     Copy
                     <span id="success-popup">Copied to clipboard!</span>
                 </button>

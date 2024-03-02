@@ -1,9 +1,9 @@
 const Dictionary = {
-    get_definition(glyph) {
+    getDefinition(glyph) {
         return this.definitions.get(glyph);
     },
 
-    get_glyphs(letter) {
+    getGlyphs(letter) {
         const glyphs = [];
         // get all glyph options that start with the letter
         for (let definition of this.definitions.entries()) {

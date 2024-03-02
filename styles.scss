@@ -39,6 +39,8 @@ $input-bg-color: #f6d0cb;
 $pastel-green: #74d3ae;
 $pastel-red: #e5705b;
 $dark-pastel-blue: #0c6291;
+$dark-pastel-purple: #7461b1;
+$dark-pastel-red: #a63446;
 
 $visible-glyph-count: 4;
 
@@ -86,17 +88,59 @@ button {
   padding: .4em .5em;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+
 #name-input-container {
   margin: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  position: relative;
 
   label {
     font-weight: 300;
     font-size: 24px;
+  }
+
+  .row {
+    gap: 12px;
+
+    button {
+      padding: 16px 20px;
+      border-radius: 24px;
+
+      &#reset-button {
+        background: $dark-pastel-red;
+        color: white;
+
+        &:hover {
+          background: lighten($dark-pastel-red, 10%);
+        }
+
+        &:active {
+          background: darken($dark-pastel-red, 10%);
+        }
+      }
+
+      &#randomize-button {
+        background: $dark-pastel-purple;
+        color: white;
+
+        &:hover {
+          background: lighten($dark-pastel-purple, 10%);
+        }
+
+        &:active {
+          background: darken($dark-pastel-purple, 10%);
+        }
+      }
+    }
   }
 
   .text-box-container {
@@ -110,6 +154,7 @@ button {
     border-style: solid;
     border-radius: 24px;
     background: $input-bg-color;
+    position: relative;
   }
 
   #name-text-box, #name-text-box-size-calibration {
@@ -124,9 +169,8 @@ button {
 
   #name-text-box {
     position: absolute;
-    padding-left: 21px;
     left: 0;
-    width: 100%;
+    width: calc(100% - 24px);
     // make text invisible, but the cursor still visible
     color: transparent;
     caret-color: black;
@@ -134,6 +178,7 @@ button {
 
   #name-text-box-size-calibration {
     white-space: pre;
+
     &:empty::before {
       content: "jan Sonja";
       color: #606060;

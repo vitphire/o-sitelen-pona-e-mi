@@ -68,17 +68,51 @@ button {
   padding: 0.4em 0.5em;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+
 #name-input-container {
   margin: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  position: relative;
 }
 #name-input-container label {
   font-weight: 300;
   font-size: 24px;
+}
+#name-input-container .row {
+  gap: 12px;
+}
+#name-input-container .row button {
+  padding: 16px 20px;
+  border-radius: 24px;
+}
+#name-input-container .row button#reset-button {
+  background: #a63446;
+  color: white;
+}
+#name-input-container .row button#reset-button:hover {
+  background: #c6475b;
+}
+#name-input-container .row button#reset-button:active {
+  background: #7f2836;
+}
+#name-input-container .row button#randomize-button {
+  background: #7461b1;
+  color: white;
+}
+#name-input-container .row button#randomize-button:hover {
+  background: #9283c2;
+}
+#name-input-container .row button#randomize-button:active {
+  background: #5c4a95;
 }
 #name-input-container .text-box-container {
   margin: 12px 0;
@@ -91,6 +125,7 @@ button {
   border-style: solid;
   border-radius: 24px;
   background: #f6d0cb;
+  position: relative;
 }
 #name-input-container #name-text-box, #name-input-container #name-text-box-size-calibration {
   padding: 12px 0 12px 18px;
@@ -103,9 +138,8 @@ button {
 }
 #name-input-container #name-text-box {
   position: absolute;
-  padding-left: 21px;
   left: 0;
-  width: 100%;
+  width: calc(100% - 24px);
   color: transparent;
   caret-color: black;
 }

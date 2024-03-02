@@ -59,7 +59,8 @@ function copyGlyphs() {
 function resetOptions() {
     for (let nameLetter of document.getElementById('glyph-selector')
         .querySelectorAll('.name-letter')) {
-        scrollLetterTo(nameLetter, -SELECTED_GLYPH_INDEX);
+        scrollLetterTo(nameLetter, (nameLetter.letterGlyphCount - SELECTED_GLYPH_INDEX),
+            {f: 3, zeta: 1, r: 0.1});
     }
 }
 
@@ -215,7 +216,7 @@ function setLetters(letters) {
 
         while (scrollPositions.length <= i) {
             // Default scroll position makes the first glyph selected
-            scrollPositions.push((-SELECTED_GLYPH_INDEX));
+            scrollPositions.push(glyphs.length - SELECTED_GLYPH_INDEX);
         }
         nameLetter.classList.add('name-letter');
         nameLetter.style.setProperty('--letter-index', i.toString());

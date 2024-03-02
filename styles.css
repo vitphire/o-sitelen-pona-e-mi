@@ -89,6 +89,7 @@ button {
 }
 #name-input-container .row {
   gap: 12px;
+  flex-wrap: wrap;
 }
 #name-input-container .row button {
   padding: 16px 20px;

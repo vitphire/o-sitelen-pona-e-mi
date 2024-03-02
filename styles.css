@@ -113,8 +113,8 @@ button {
   white-space: pre;
 }
 #name-input-container #name-text-box-size-calibration:empty::before {
-  content: attr(placeholder);
-  color: #aaa;
+  content: "jan Sonja";
+  color: #606060;
 }
 #name-input-container #status-text--valid, #name-input-container #status-text--uncommon {
   color: #74d3ae;

@@ -135,8 +135,8 @@ button {
   #name-text-box-size-calibration {
     white-space: pre;
     &:empty::before {
-      content: attr(placeholder);
-      color: #aaa;
+      content: "jan Sonja";
+      color: #606060;
     }
   }
 

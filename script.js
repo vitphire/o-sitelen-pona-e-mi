@@ -61,7 +61,7 @@ function resize_outline() {
 scroll_positions = []; // used for setting the scroll position of each letter when the name is changed
 
 function scrollLetterBy(nameLetter, number) {
-    const scroll_pos = scroll_positions[parseInt(nameLetter.style.getPropertyValue('--letter-index'))];
+    const scroll_pos = scroll_positions[nameLetter.letter_index];
     scrollLetterTo(nameLetter, parseInt(scroll_pos) + number);
 }
 
@@ -72,7 +72,10 @@ function set_scroll_position_looped(nameLetter, scroll_pos) {
     return scroll_pos_mod;
 }
 
-async function scroll_animation(nameLetter, f = 5, zeta = 1, r = 0.1) {
+async function scroll_animation(nameLetter,
+                                f = 5,
+                                zeta = 1,
+                                r = 0.1) {
     // Thank you t3ssel8r
     // https://youtu.be/KPoeNZZ6H4s
 
@@ -109,8 +112,11 @@ async function scroll_animation(nameLetter, f = 5, zeta = 1, r = 0.1) {
 
         set_scroll_position_looped(nameLetter, scroll_pos);
 
-        if (Math.abs(scroll_velocity) < epsilon && Math.abs(scroll_pos - x) < epsilon) {
-            scroll_positions[letter_index] = set_scroll_position_looped(nameLetter, x);
+        if (Math.abs(scroll_velocity) < epsilon &&
+            Math.abs(scroll_pos - x) < epsilon) {
+            const p = set_scroll_position_looped(nameLetter, x);
+            set_scroll_position_looped(nameLetter, p);
+            scroll_positions[letter_index] = p;
             break;
         } else {
             await new Promise(r => setTimeout(r, 1));
@@ -119,7 +125,7 @@ async function scroll_animation(nameLetter, f = 5, zeta = 1, r = 0.1) {
 }
 
 function scrollLetterTo(nameLetter, scroll_pos) {
-    const letter_index = parseInt(nameLetter.style.getPropertyValue('--letter-index'));
+    const letter_index = nameLetter.letter_index;
     scroll_positions[letter_index] = scroll_pos;
     if (!nameLetter.is_scrolling) {
         nameLetter.is_scrolling = true;

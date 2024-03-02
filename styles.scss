@@ -19,6 +19,8 @@ $pastel-green: #74d3ae;
 $pastel-red: #e5705b;
 $dark-pastel-blue: #0c6291;
 
+$visible-glyph-count: 4;
+
 @mixin no-select {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -183,7 +185,6 @@ button {
       @include no-select;
 
       $glyph-height: 1.2em;
-      $glyph-count: 4;
 
       pointer-events: none;
 
@@ -249,7 +250,7 @@ button {
         }
       }
 
-      height: calc($glyph-count * $glyph-height);
+      height: calc($visible-glyph-count * $glyph-height);
 
       .name-letter {
         --letter-index: 0;
@@ -270,7 +271,7 @@ button {
         margin: calc(0px - var(--border-width));
         background-color: var(--letter-bg-color);
         width: 1em;
-        height: calc($glyph-count * $glyph-height);
+        height: calc($visible-glyph-count * $glyph-height);
         overflow: hidden;
         z-index: -1;
 

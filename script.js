@@ -1,4 +1,5 @@
 const selected_glyph_index = 1;
+const visible_glyph_count = 4;
 
 /* Original color set (adjusted for contrast)
     '#A4BF8A', '#A6374B', '#0D688C',
@@ -211,7 +212,9 @@ function set_letters(letters) {
             glyphElement.textContent = glyph;
             nameLetterScroll.appendChild(glyphElement);
         }
-        nameLetter.appendChild(nameLetterScroll.cloneNode(true));
+        for (let j = 0; j < visible_glyph_count / glyphs.length; j++) {
+            nameLetter.appendChild(nameLetterScroll.cloneNode(true));
+        }
         nameLetter.appendChild(nameLetterScroll);
 
         nameLetter.querySelectorAll('.glyph').forEach(glyph => {

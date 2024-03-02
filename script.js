@@ -36,6 +36,21 @@ function get_selected_glyphs() {
     return nameSelectedGlyphs;
 }
 
+function copy_glyphs() {
+    const popup = document.querySelector('#success-popup');
+    popup.classList.remove('show');
+    const nameSelectedGlyphs = get_selected_glyphs();
+    const noun = document.getElementById('noun').textContent;
+    const name = noun + ' [' + nameSelectedGlyphs.join(' ') + ']';
+    navigator.clipboard.writeText(name).then(_ => {});
+    setTimeout(() => popup.classList.add('show'), 1);
+    if (!copy_glyphs.event_listener_added) {
+        popup.addEventListener('animationend', () => {
+            popup.classList.remove('show');});
+        copy_glyphs.event_listener_added = true;
+    }
+}
+
 function resize_outline() {
     const nameOutline = document.getElementById('name-outline');
     const nameLetters = document.getElementById('glyph-selector')
@@ -52,15 +67,16 @@ function scrollLetterBy(nameLetter, number) {
 
 function set_scroll_position_looped(nameLetter, scroll_pos) {
     nameLetter.current_scroll_pos = scroll_pos;
-    const scroll_pos_mod = mod(scroll_pos, parseInt(nameLetter.style.getPropertyValue('--letter-glyph-count')));
+    const scroll_pos_mod = mod(scroll_pos, nameLetter.letter_glyph_count);
     nameLetter.style.setProperty('--letter-scroll', scroll_pos_mod);
+    return scroll_pos_mod;
 }
 
 async function scroll_animation(nameLetter, f = 5, zeta = 1, r = 0.1) {
     // Thank you t3ssel8r
     // https://youtu.be/KPoeNZZ6H4s
 
-    const letter_index = parseInt(nameLetter.style.getPropertyValue('--letter-index'));
+    const letter_index = nameLetter.letter_index;
 
     const time_scale = 0.001;
 
@@ -94,7 +110,7 @@ async function scroll_animation(nameLetter, f = 5, zeta = 1, r = 0.1) {
         set_scroll_position_looped(nameLetter, scroll_pos);
 
         if (Math.abs(scroll_velocity) < epsilon && Math.abs(scroll_pos - x) < epsilon) {
-            set_scroll_position_looped(nameLetter, x);
+            scroll_positions[letter_index] = set_scroll_position_looped(nameLetter, x);
             break;
         } else {
             await new Promise(r => setTimeout(r, 1));

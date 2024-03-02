@@ -10,12 +10,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" as="font">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload" as="font">
 
-    <link rel="preload" href="sitelen%20seli%20kiwen/sitelenselikiwenasuki.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="sitelen%20seli%20kiwen/sitelenselikiwenjuniko.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="sitelen%20seli%20kiwen/sitelenselikiwenmonoasuki.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenasuki.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf" as="font" type="font/ttf" crossorigin>
 
     <script src="dictionary.js"></script>
     <script src="script.js"></script>
@@ -43,7 +43,10 @@
                 <div id="noun-and-name">
                     <div id="noun" class="no-select">jan</div><pre id="name-outline"></pre>
                 </div>
-                <br><br>
+                <button id="copy-button" class="lexend" onclick="copy_glyphs();">
+                    Copy
+                    <span id="success-popup">Copied to clipboard!</span>
+                </button>
             </div>
         </div>
         <div id="definitions-section">

@@ -1,16 +1,37 @@
 @font-face {
-  font-family: "sitelen-seli-kiwen-mono--asuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen--asuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenasuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenasuki.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "sitelen-seli-kiwen--asuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenasuki.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen--atuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenatuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenatuki.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "sitelen-seli-kiwen--juniko";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
+  src: url(sitelen-seli-kiwen/sitelenselikiwenjuniko.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "sitelen-seli-kiwen-mono--asuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "sitelen-seli-kiwen-mono--atuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoatuki.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "sitelen-seli-kiwen-mono--juniko";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf) format("truetype");
 }
 
 $bg-color: #f6e7cb;
@@ -71,6 +92,7 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  position: relative;
 
   label {
     font-weight: 300;
@@ -84,77 +106,68 @@ button {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-  }
-
-  #name-text-box {
     border-width: 3px;
     border-style: solid;
     border-radius: 24px;
-    padding: 12px 0 12px 18px;
-    height: fit-content;
     background: $input-bg-color;
+  }
+
+  #name-text-box, #name-text-box-size-calibration {
+    padding: 12px 0 12px 18px;
     font-family: "sitelen-seli-kiwen--juniko", serif;
     font-size: 30px;
     min-width: 4em;
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  #name-text-box {
+    position: absolute;
+    padding-left: 21px;
+    left: 0;
+    width: 100%;
+    // make text invisible, but the cursor still visible
+    color: transparent;
+    caret-color: black;
+  }
+
+  #name-text-box-size-calibration {
+    white-space: pre;
+    &:empty::before {
+      content: attr(placeholder);
+      color: #aaa;
+    }
   }
 
   #status-text {
-    &--invalid {
-      color: $pastel-red;
-    }
-
     &--valid, &--uncommon {
       color: $pastel-green;
+    }
+
+    &--invalid {
+      color: $pastel-red;
     }
 
     &--valid, &--uncommon, &--invalid {
       font-size: 32px;
       margin: 12px;
-    }
-  }
-
-  &.valid, &.uncommon {
-    #name-text-box {
-      border-color: $pastel-green;
-    }
-
-    #status-text--invalid {
       display: none;
     }
   }
 
-  &.valid {
-    #status-text--valid {
-      display: block;
-    }
-
-    #status-text--uncommon {
-      display: none;
-    }
+  &.valid .text-box-container, &.uncommon .text-box-container {
+    border-color: $pastel-green;
   }
 
-  &.uncommon {
-    #status-text--uncommon {
-      display: block;
-    }
-
-    #status-text--valid {
-      display: none;
-    }
+  &.invalid .text-box-container {
+    border-color: $pastel-red;
   }
 
-  &.invalid {
-    #name-text-box {
-      border-color: $pastel-red;
-    }
-
-    #status-text--invalid {
-      display: block;
-    }
-
-    #status-text--valid, #status-text--uncommon {
-      display: none;
-    }
+  &.valid #status-text--valid,
+  &.uncommon #status-text--uncommon,
+  &.invalid #status-text--invalid {
+    display: block;
   }
 }
 

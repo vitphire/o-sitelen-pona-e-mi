@@ -282,8 +282,10 @@ function set_definitions(selectedGlyphs) {
 function on_name_change() {
     const textBox = document.getElementById('name-text-box');
     const textBoxContainer = document.getElementById('name-input-container');
+    const textBoxSizeCalibration = document.getElementById('name-text-box-size-calibration');
 
-    textBox.size = Math.max(4, textBox.value.length);
+    textBoxSizeCalibration.textContent = textBox.value;
+
     const words = textBox.value.split(' ');
     const noun = words[0];
     const noun_valid = validate_noun(noun);

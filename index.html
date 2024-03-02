@@ -10,10 +10,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" as="font">
+    <link rel="preload" href="https://fonts.gstatic.com/s/lexend/v19/wlpwgwvFAVdoq2_v-6QU.woff2" as="font">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-    <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenasuki.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf" as="font" type="font/ttf" crossorigin>
 
@@ -27,9 +26,9 @@
     <div id="name-input-container">
         <label for="name-text-box" class="lexend">input your name here for options</label>
         <div class="text-box-container">
+            <span id="name-text-box-size-calibration"></span>
             <input type="text" id="name-text-box"
-                   oninput="on_name_change();"
-                   size="2" placeholder="jan Sonja"/>
+                   oninput="on_name_change();"/>
             <div id="status-text--valid" class="lexend">Valid!</div>
             <div id="status-text--uncommon" class="lexend">Uncommon!</div>
             <div id="status-text--invalid" class="lexend">Invalid</div>

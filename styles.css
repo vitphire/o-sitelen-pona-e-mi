@@ -1,14 +1,32 @@
 @font-face {
-  font-family: "sitelen-seli-kiwen-mono--asuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen--asuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenasuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenasuki.ttf) format("truetype");
 }
 @font-face {
-  font-family: "sitelen-seli-kiwen--asuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenasuki.ttf") format("truetype");
+  font-family: "sitelen-seli-kiwen--atuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenatuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenatuki.ttf) format("truetype");
 }
 @font-face {
   font-family: "sitelen-seli-kiwen--juniko";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf") format("truetype");
+  src: url(sitelen-seli-kiwen/sitelenselikiwenjuniko.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf) format("truetype");
+}
+@font-face {
+  font-family: "sitelen-seli-kiwen-mono--asuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf) format("truetype");
+}
+@font-face {
+  font-family: "sitelen-seli-kiwen-mono--atuki";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoatuki.ttf) format("truetype");
+}
+@font-face {
+  font-family: "sitelen-seli-kiwen-mono--juniko";
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot);
+  src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf) format("truetype");
 }
 .no-select {
   -webkit-user-select: none;
@@ -56,6 +74,7 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  position: relative;
 }
 #name-input-container label {
   font-weight: 300;
@@ -68,54 +87,54 @@ button {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-}
-#name-input-container #name-text-box {
   border-width: 3px;
   border-style: solid;
   border-radius: 24px;
-  padding: 12px 0 12px 18px;
-  height: fit-content;
   background: #f6d0cb;
+}
+#name-input-container #name-text-box, #name-input-container #name-text-box-size-calibration {
+  padding: 12px 0 12px 18px;
   font-family: "sitelen-seli-kiwen--juniko", serif;
   font-size: 30px;
   min-width: 4em;
+  background: none;
+  border: none;
+  outline: none;
 }
-#name-input-container #status-text--invalid {
-  color: #e5705b;
+#name-input-container #name-text-box {
+  position: absolute;
+  padding-left: 21px;
+  left: 0;
+  width: 100%;
+  color: transparent;
+  caret-color: black;
+}
+#name-input-container #name-text-box-size-calibration {
+  white-space: pre;
+}
+#name-input-container #name-text-box-size-calibration:empty::before {
+  content: attr(placeholder);
+  color: #aaa;
 }
 #name-input-container #status-text--valid, #name-input-container #status-text--uncommon {
   color: #74d3ae;
 }
+#name-input-container #status-text--invalid {
+  color: #e5705b;
+}
 #name-input-container #status-text--valid, #name-input-container #status-text--uncommon, #name-input-container #status-text--invalid {
   font-size: 32px;
   margin: 12px;
+  display: none;
 }
-#name-input-container.valid #name-text-box, #name-input-container.uncommon #name-text-box {
+#name-input-container.valid .text-box-container, #name-input-container.uncommon .text-box-container {
   border-color: #74d3ae;
 }
-#name-input-container.valid #status-text--invalid, #name-input-container.uncommon #status-text--invalid {
-  display: none;
-}
-#name-input-container.valid #status-text--valid {
-  display: block;
-}
-#name-input-container.valid #status-text--uncommon {
-  display: none;
-}
-#name-input-container.uncommon #status-text--uncommon {
-  display: block;
-}
-#name-input-container.uncommon #status-text--valid {
-  display: none;
-}
-#name-input-container.invalid #name-text-box {
+#name-input-container.invalid .text-box-container {
   border-color: #e5705b;
 }
-#name-input-container.invalid #status-text--invalid {
+#name-input-container.valid #status-text--valid, #name-input-container.uncommon #status-text--uncommon, #name-input-container.invalid #status-text--invalid {
   display: block;
-}
-#name-input-container.invalid #status-text--valid, #name-input-container.invalid #status-text--uncommon {
-  display: none;
 }
 
 .results-container {

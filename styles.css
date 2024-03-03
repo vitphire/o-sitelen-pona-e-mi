@@ -120,7 +120,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   border-width: 3px;
   border-style: solid;

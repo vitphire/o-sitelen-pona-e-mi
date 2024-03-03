@@ -5,4 +5,4 @@ This is my attempt at bringing to reality the
 to create a tool that helps write proper adjectives in sitelen pona.
 
 You can try it out without downloading on
-[GitHub html preview](https://html-preview.github.io/?url=https://github.com/vitphire/ijo-pi-sitelen-nimi/blob/master/index.html).
+[GitHub html preview](https://html-preview.github.io/?url=https://github.com/vitphire/o-sitelen-pona-e-mi/blob/master/index.html).

@@ -57,6 +57,10 @@ function randomizeOptions() {
     }
 }
 
+function openSettings() {
+    alert('Settings are not implemented yet');
+}
+
 function resizeOutline() {
     const nameOutline = document.getElementById('name-outline');
     const nameLetters = document.getElementById('glyph-selector')

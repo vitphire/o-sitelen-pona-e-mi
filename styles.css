@@ -188,6 +188,14 @@
   user-select: none;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+
 html, body {
   background: var(--main-bg);
   color: var(--main-text);
@@ -231,12 +239,24 @@ button:active {
   background: linear-gradient(to top, hsla(0, 0%, 0%, 0.15), hsla(0, 0%, 0%, 0.15)) var(--background);
 }
 
-.row {
+#title-settings-row {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0;
+  flex-wrap: wrap-reverse;
+  margin: 0 0 20px 0;
+}
+#title-settings-row h1 {
+  flex-grow: 1;
+}
+#title-settings-row #settings-button {
+  margin-left: auto;
+  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+  font-size: 36px;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  --background: var(--main-bg);
+  color: var(--main-text);
 }
 
 #name-input-container {
@@ -360,8 +380,12 @@ button:active {
   margin-top: 18px;
   height: 4.8em;
 }
+.results-container .glyph-select-section #glyph-selector #noun-and-name {
+  font-size: 0;
+}
 .results-container .glyph-select-section #glyph-selector #noun, .results-container .glyph-select-section #glyph-selector #name-outline {
   font: inherit;
+  font-size: 64px;
   display: inline;
 }
 .results-container .glyph-select-section #glyph-selector #copy-button {

@@ -113,16 +113,15 @@ $pastel-black: #000000;
   --success-popup-text: #{$pastel-white};
 }
 
-$letter-colors:
-        $pastel-lime, $pastel-dark-lime,
-        $pastel-red, $pastel-dark-red,
-        $pastel-blue, $pastel-dark-blue,
-        $pastel-purple, $pastel-dark-purple,
-        $pastel-green, $pastel-dark-green,
-        $pastel-orange, $pastel-dark-orange,
-        $pastel-blue-2, $pastel-dark-blue-2,
-        $pastel-yellow, $pastel-dark-yellow,
-        $pastel-magenta, $pastel-dark-magenta;
+$letter-colors: $pastel-lime, $pastel-dark-lime,
+$pastel-red, $pastel-dark-red,
+$pastel-blue, $pastel-dark-blue,
+$pastel-purple, $pastel-dark-purple,
+$pastel-green, $pastel-dark-green,
+$pastel-orange, $pastel-dark-orange,
+$pastel-blue-2, $pastel-dark-blue-2,
+$pastel-yellow, $pastel-dark-yellow,
+$pastel-magenta, $pastel-dark-magenta;
 
 @media (prefers-color-scheme: dark) {
   @for $i from 1 through 9 {
@@ -157,6 +156,14 @@ $visible-glyph-count: 4;
 
 .no-select {
   @include no-select;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
 }
 
 html, body {
@@ -208,12 +215,26 @@ button {
   }
 }
 
-.row {
+#title-settings-row {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0;
+  flex-wrap: wrap-reverse;
+  margin: 0 0 20px 0;
+
+  h1 {
+    flex-grow: 1;
+  }
+
+  #settings-button {
+    margin-left: auto;
+    font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+    font-size: 36px;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    --background: var(--main-bg);
+    color: var(--main-text);
+  }
 }
 
 #name-input-container {
@@ -361,8 +382,13 @@ button {
       z-index: 2;
       margin-top: 18px;
 
+      #noun-and-name {
+        font-size: 0; // remove whitespace
+      }
+
       #noun, #name-outline {
         font: inherit;
+        font-size: 64px;
         display: inline;
       }
 

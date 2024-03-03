@@ -21,7 +21,10 @@
 </head>
 <body>
 <main>
-    <h1>o sitelen pona e mi!</h1>
+    <div class="row" id="title-settings-row">
+        <h1>o sitelen pona e mi!</h1>
+        <button id="settings-button" onclick="openSettings();">ken</button>
+    </div>
     <h2>show potential glyph options for a toki pona name in sitelen pona</h2>
     <div id="name-input-container">
         <label for="name-text-box" class="lexend">input your name here for options</label>
@@ -44,7 +47,8 @@
             <div id="glyph-selector">
                 <br>
                 <div id="noun-and-name">
-                    <div id="noun" class="no-select">jan</div><pre id="name-outline"></pre>
+                    <div id="noun" class="no-select">jan</div>
+                    <pre id="name-outline"></pre>
                 </div>
                 <button id="copy-button" class="lexend" onclick="copyGlyphs(   );">
                     Copy

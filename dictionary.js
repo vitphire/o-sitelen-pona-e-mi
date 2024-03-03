@@ -15,7 +15,7 @@ const Dictionary = {
         return glyphs;
     },
 
-
+    // TODO: Linku integration
     definitions: new Map(Object.entries({
         "a": "emphasis particle",
         "akesi": "reptile, amphibian",

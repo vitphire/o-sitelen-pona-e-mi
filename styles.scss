@@ -34,13 +34,118 @@
   src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf) format("truetype");
 }
 
-$bg-color: #f6e7cb;
-$input-bg-color: #f6d0cb;
+/* Original color set (this was adjusted to pass WCAG AAA for contrast with black and white)
+    '#A4BF8A', '#A6374B', '#0D688C',
+    '#4B4073', '#3A9E7A', '#C26747',
+    '#2D4F94', '#BD9A5C', '#6C3570'
+ */
+
+$pastel-gray: #404040;
+
+// These all pass WCAG AAA for contrast with black
+$pastel-magenta: #ce7eb3;
+$pastel-purple: #a18cd1;
+$pastel-blue: #6f96ec;
+$pastel-blue-2: #6ec0cf;
 $pastel-green: #74d3ae;
-$pastel-red: #e5705b;
-$dark-pastel-blue: #0c6291;
-$dark-pastel-purple: #7461b1;
-$dark-pastel-red: #a63446;
+$pastel-lime: #b0d87f;
+$pastel-yellow: #f5eaa6;
+$pastel-orange: #f0aa7f;
+$pastel-red: #e66460;
+
+$pastel-white: #ffffff;
+$pastel-light-gray: #dddddd;
+$pastel-light-gray-2: #999999;
+$pastel-off-white: #f6e7cb;
+$light-pastel-red: #f6d0cb;
+
+// These all pass WCAG AAA for contrast with white
+$pastel-dark-magenta: #7a3e6c;
+$pastel-dark-purple: #594893;
+$pastel-dark-blue: #0a4885;
+$pastel-dark-blue-2: #0b6079;
+$pastel-dark-green: #21634E;
+$pastel-dark-green-2: #0c4200;
+$pastel-dark-lime: #3d610a;
+$pastel-dark-yellow: #625806;
+$pastel-dark-orange: #8A460F;
+$pastel-dark-red: #973030;
+
+$pastel-dark-gray: #2a2a2a;
+$pastel-dark-gray-2: #141516;
+$pastel-black: #000000;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg: #{$pastel-dark-gray-2};
+    --main-text: #{$pastel-light-gray};
+    --input-bg: #{$pastel-dark-gray};
+    --input-text: #{$pastel-white};
+    --status-good: #{$pastel-green};
+    --status-bad: #{$pastel-red};
+    --letter-border-color: #{$pastel-gray};
+    --success-popup-bg: transparentize(#{$pastel-dark-gray}, 0.6);
+    --success-popup-text: #{$pastel-white};
+    --button-border-color: #{$pastel-gray};
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-bg: #{$pastel-off-white};
+    --main-text: #{$pastel-black};
+    --input-bg: #{$light-pastel-red};
+    --input-text: #{$pastel-black};
+    --status-good: #{$pastel-dark-green-2};
+    --status-bad: #{$pastel-dark-red};
+    --letter-border-color: #{$pastel-black};
+    --success-popup-bg: transparentize(black, 0.6);
+    --success-popup-text: #{$pastel-white};
+    --button-border-color: #{$pastel-black};
+  }
+}
+
+:root {
+  --reset-button-bg: #{$pastel-dark-red};
+  --reset-button-text: #{$pastel-white};
+  --randomize-button-bg: #{$pastel-dark-purple};
+  --randomize-button-text: #{$pastel-white};
+  --copy-button-bg: #{$pastel-dark-blue};
+  --copy-button-text: #{$pastel-white};
+}
+
+$letter-colors:
+        $pastel-lime, $pastel-dark-lime,
+        $pastel-red, $pastel-dark-red,
+        $pastel-blue, $pastel-dark-blue,
+        $pastel-purple, $pastel-dark-purple,
+        $pastel-green, $pastel-dark-green,
+        $pastel-orange, $pastel-dark-orange,
+        $pastel-blue-2, $pastel-dark-blue-2,
+        $pastel-yellow, $pastel-dark-yellow,
+        $pastel-magenta, $pastel-dark-magenta;
+
+@media (prefers-color-scheme: dark) {
+  @for $i from 1 through 9 {
+    .l-fg-#{$i} {
+      color: nth($letter-colors, ($i * 2) - 1);
+    }
+    .l-bg-#{$i} {
+      background-color: nth($letter-colors, $i * 2);
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  @for $i from 1 through 9 {
+    .l-fg-#{$i} {
+      color: nth($letter-colors, $i * 2);
+    }
+    .l-bg-#{$i} {
+      background-color: nth($letter-colors, ($i * 2) - 1);
+    }
+  }
+}
 
 $visible-glyph-count: 4;
 
@@ -56,7 +161,8 @@ $visible-glyph-count: 4;
 }
 
 html, body {
-  background: $bg-color;
+  background: var(--main-bg);
+  color: var(--main-text);
 }
 
 main {
@@ -81,11 +187,26 @@ h1 {
 
 button {
   --border-width: 4px;
-  border: var(--border-width) solid black;
+  border-style: solid;
+  border-color: var(--button-border-color);
+  border-width: var(--border-width);
   border-radius: 20px;
   font-weight: 400;
   font-size: 24px;
   padding: .4em .5em;
+  background: var(--background);
+
+  &:hover {
+    $fade-to: hsl(0, 0%, 100%, 0.1);
+    background: linear-gradient(to top, $fade-to, $fade-to
+    ) var(--background);
+  }
+
+  &:active {
+    $fade-to: hsl(0, 0%, 0%, 0.15);
+    background: linear-gradient(to top, $fade-to, $fade-to
+    ) var(--background);
+  }
 }
 
 .row {
@@ -117,29 +238,13 @@ button {
       border-radius: 24px;
 
       &#reset-button {
-        background: $dark-pastel-red;
-        color: white;
-
-        &:hover {
-          background: lighten($dark-pastel-red, 10%);
-        }
-
-        &:active {
-          background: darken($dark-pastel-red, 10%);
-        }
+        --background: var(--reset-button-bg);
+        color: var(--reset-button-text);
       }
 
       &#randomize-button {
-        background: $dark-pastel-purple;
-        color: white;
-
-        &:hover {
-          background: lighten($dark-pastel-purple, 10%);
-        }
-
-        &:active {
-          background: darken($dark-pastel-purple, 10%);
-        }
+        --background: var(--randomize-button-bg);
+        color: var(--randomize-button-text);
       }
     }
   }
@@ -154,7 +259,8 @@ button {
     border-width: 3px;
     border-style: solid;
     border-radius: 24px;
-    background: $input-bg-color;
+    background: var(--input-bg);
+    color: var(--input-text);
     position: relative;
   }
 
@@ -174,7 +280,7 @@ button {
     width: calc(100% - 24px);
     // make text invisible, but the cursor still visible
     color: transparent;
-    caret-color: black;
+    caret-color: var(--input-text);
   }
 
   #name-text-box-size-calibration {
@@ -182,17 +288,18 @@ button {
 
     &:empty::before {
       content: "jan Sonja";
-      color: #606060;
+      color: var(--input-text);
+      opacity: 0.5;
     }
   }
 
   #status-text {
     &--valid, &--uncommon {
-      color: $pastel-green;
+      color: var(--status-good);
     }
 
     &--invalid {
-      color: $pastel-red;
+      color: var(--status-bad);
     }
 
     &--valid, &--uncommon, &--invalid {
@@ -203,11 +310,11 @@ button {
   }
 
   &.valid .text-box-container, &.uncommon .text-box-container {
-    border-color: $pastel-green;
+    border-color: var(--status-good);
   }
 
   &.invalid .text-box-container {
-    border-color: $pastel-red;
+    border-color: var(--status-bad);
   }
 
   &.valid #status-text--valid,
@@ -261,25 +368,18 @@ button {
       }
 
       #copy-button {
-        pointer-events: auto;
-        color: white;
-        background: $dark-pastel-blue;
+        --background: var(--copy-button-bg);
+        color: var(--copy-button-text);
+
         position: absolute;
-
-        &:hover {
-          background: lighten($dark-pastel-blue, 10%);
-        }
-
-        &:active {
-          background: darken($dark-pastel-blue, 10%);
-        }
+        pointer-events: auto;
 
         #success-popup {
           position: absolute;
           left: 12px;
           bottom: calc(100% + 12px);
-          background: rgba(0, 0, 0, 0.8);
-          color: white;
+          background: var(--success-popup-bg);
+          color: var(--success-popup-text);
           z-index: 1;
           padding: 4px 8px;
           border-radius: 8px;
@@ -313,7 +413,6 @@ button {
 
       .name-letter {
         --letter-index: 0;
-        --letter-bg-color: red;
         --letter-scroll: 0;
         --letter-glyph-count: 1;
 
@@ -322,13 +421,14 @@ button {
         position: absolute;
 
         --border-width: 4px;
-        border: var(--border-width) solid black;
+        border-width: var(--border-width);
+        border-style: solid;
+        border-color: var(--letter-border-color);
         border-radius: 18px;
         top: 0;
         left: calc(.9em * (var(--letter-index) + 2));
         box-sizing: border-box;
         margin: calc(0px - var(--border-width));
-        background-color: var(--letter-bg-color);
         width: 1em;
         height: calc($visible-glyph-count * $glyph-height);
         overflow: hidden;
@@ -354,20 +454,16 @@ button {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: flex-start;
+      align-items: stretch;
       flex-wrap: wrap;
       align-self: stretch;
 
       & > div {
-        --definition-color: red;
-
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        align-items: flex-start;
 
         font-size: 54px;
-        color: var(--definition-color);
 
         .word {
           font-family: "sitelen-seli-kiwen-mono--asuki", serif;
@@ -376,6 +472,7 @@ button {
         .definition {
           font-family: "sitelen-seli-kiwen--juniko", serif;
           white-space: nowrap;
+          flex-grow: 1;
 
           &::before {
             content: "-";

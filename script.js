@@ -1,25 +1,8 @@
 const SELECTED_GLYPH_INDEX = 1;
 const VISIBLE_GLYPH_COUNT = 4;
+const COLOR_VARIANTS = 9;
 
 const scrollPositions = []; // used for setting the scroll position of each letter when the name is changed
-
-/* Original color set (adjusted for contrast)
-    '#A4BF8A', '#A6374B', '#0D688C',
-    '#4B4073', '#3A9E7A', '#C26747',
-    '#2D4F94', '#BD9A5C', '#6C3570'
- */
-
-const letterBgColors = [
-    '#A4BF8A', '#C7576B', '#0E7EAA',
-    '#7A6EA7', '#3A9E7A', '#C26747',
-    '#4C75C8', '#BD9A5C', '#AE5CB2',
-]
-
-const letterColors = [
-    '#3C741B', '#A6374B', '#0D688C',
-    '#4B4073', '#297056', '#954C32',
-    '#2D4F94', '#775F31', '#6C3570',
-]
 
 function mod(n, m) {
     return ((n % m) + m) % m;
@@ -221,7 +204,7 @@ function setLetters(letters) {
         nameLetter.classList.add('name-letter');
         nameLetter.style.setProperty('--letter-index', i.toString());
         nameLetter.letterIndex = i;
-        nameLetter.style.setProperty('--letter-bg-color', letterBgColors[i % letterBgColors.length]);
+        nameLetter.classList.add('l-bg-' + (mod(i, COLOR_VARIANTS) + 1).toString());
         nameLetter.style.setProperty('--letter-glyph-count', glyphs.length.toString());
         nameLetter.letterGlyphCount = glyphs.length;
 
@@ -325,7 +308,7 @@ function setDefinitions(selectedGlyphs) {
         definitionText.textContent = definition;
         definitionEl.appendChild(definitionWord);
         definitionEl.appendChild(definitionText);
-        definitionEl.style.setProperty('--definition-color', letterColors[i % letterColors.length]);
+        definitionEl.classList.add('l-fg-' + (mod(i, COLOR_VARIANTS) + 1).toString())
         definitionContainer.appendChild(definitionEl);
     });
 }

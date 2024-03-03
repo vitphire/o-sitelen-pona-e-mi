@@ -151,7 +151,7 @@ async function scrollAnimation(nameLetter,
 
 function scrollLetterTo(nameLetter, scrollPos, animationParams = null) {
     const letterIndex = nameLetter.letterIndex;
-    scrollPositions[letterIndex] = scrollPos;
+    scrollPositions[letterIndex] = Math.round(scrollPos);
     if (!nameLetter.isScrolling) {
         nameLetter.isScrolling = true;
         const f = animationParams?.f ?? 5;
@@ -227,7 +227,6 @@ function setLetters(letters) {
 
         setScrollPositionLooped(nameLetter, scrollPositions[i]);
         nameLetter.isScrolling = false;
-        nameLetter.addEventListener('wheel', onScroll);
 
         let nameLetterScroll = document.createElement('div');
 
@@ -254,6 +253,31 @@ function setLetters(letters) {
             e.preventDefault();
             scrollLetterBy(nameLetter, Math.sign(e.deltaY));
         }
+
+        nameLetter.addEventListener('wheel', onScroll);
+
+        // Dragging for mobile
+        let isDragging = false;
+        let lastY = 0;
+        nameLetter.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            lastY = e.touches[0].clientY;
+        });
+        nameLetter.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+                const dy = e.touches[0].clientY - lastY;
+                const glyphHeight = e.target.clientHeight;
+                console.log(glyphHeight);
+                if (Math.abs(dy) > glyphHeight) {
+                    scrollLetterBy(nameLetter, -Math.sign(dy));
+                    lastY = lastY + Math.sign(dy) * glyphHeight;
+                }
+            }
+        });
+        nameLetter.addEventListener('touchend', () => {
+            isDragging = false;
+        });
 
         nameContainer.appendChild(nameLetter);
     }

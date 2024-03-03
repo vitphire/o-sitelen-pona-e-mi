@@ -84,8 +84,7 @@ $pastel-black: #000000;
     --status-good: #{$pastel-green};
     --status-bad: #{$pastel-red};
     --letter-border-color: #{$pastel-gray};
-    --success-popup-bg: transparentize(#{$pastel-dark-gray}, 0.6);
-    --success-popup-text: #{$pastel-white};
+    --success-popup-bg: #{transparentize($pastel-dark-gray, 0.2)};
     --button-border-color: #{$pastel-gray};
   }
 }
@@ -99,8 +98,7 @@ $pastel-black: #000000;
     --status-good: #{$pastel-dark-green-2};
     --status-bad: #{$pastel-dark-red};
     --letter-border-color: #{$pastel-black};
-    --success-popup-bg: transparentize(black, 0.6);
-    --success-popup-text: #{$pastel-white};
+    --success-popup-bg: #{transparentize($pastel-black, 0.3)};
     --button-border-color: #{$pastel-black};
   }
 }
@@ -112,6 +110,7 @@ $pastel-black: #000000;
   --randomize-button-text: #{$pastel-white};
   --copy-button-bg: #{$pastel-dark-blue};
   --copy-button-text: #{$pastel-white};
+  --success-popup-text: #{$pastel-white};
 }
 
 $letter-colors:

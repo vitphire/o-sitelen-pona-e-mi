@@ -42,8 +42,7 @@
     --status-good: #74d3ae;
     --status-bad: #e66460;
     --letter-border-color: #404040;
-    --success-popup-bg: transparentize(#2a2a2a, 0.6);
-    --success-popup-text: #ffffff;
+    --success-popup-bg: rgba(42, 42, 42, 0.8);
     --button-border-color: #404040;
   }
 }
@@ -56,8 +55,7 @@
     --status-good: #0c4200;
     --status-bad: #973030;
     --letter-border-color: #000000;
-    --success-popup-bg: transparentize(black, 0.6);
-    --success-popup-text: #ffffff;
+    --success-popup-bg: rgba(0, 0, 0, 0.7);
     --button-border-color: #000000;
   }
 }
@@ -68,6 +66,7 @@
   --randomize-button-text: #ffffff;
   --copy-button-bg: #0a4885;
   --copy-button-text: #ffffff;
+  --success-popup-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {

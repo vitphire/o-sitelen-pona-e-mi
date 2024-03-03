@@ -269,7 +269,7 @@ function setLetters(letters) {
                 const dy = e.touches[0].clientY - lastY;
                 const glyphHeight = e.target.clientHeight;
                 console.log(glyphHeight);
-                if (Math.abs(dy) > glyphHeight * 0.5) {
+                if (Math.abs(dy) > glyphHeight) {
                     scrollLetterBy(nameLetter, -Math.sign(dy));
                     lastY = lastY + Math.sign(dy) * glyphHeight;
                 }

@@ -1,3 +1,7 @@
+/**
+ * Returns the selected glyphs as an array of strings.
+ * @returns {string[]}
+ */
 function getSelectedGlyphs() {
     const nameLetters = document.getElementById('glyph-selector')
         .querySelectorAll('.name-letter');
@@ -12,6 +16,10 @@ function getSelectedGlyphs() {
     return nameSelectedGlyphs;
 }
 
+/**
+ * Copies the selected glyphs to the clipboard.
+ * Formats the name as "noun [glyph1 glyph2 ...]".
+ */
 function copyGlyphs() {
     const popup = document.querySelector('#success-popup');
     popup.classList.remove('show');

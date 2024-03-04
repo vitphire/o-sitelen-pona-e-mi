@@ -1,4 +1,8 @@
 function setDefinitions(selectedGlyphs) {
+    /**
+     * Updates the definition list with the definitions of the selected glyphs.
+     * @param {string[]} selectedGlyphs - An array of selected glyphs (as ligature strings).
+     */
     const definitionContainer = document.getElementById('definitions');
     definitionContainer.innerHTML = "";
     selectedGlyphs.forEach((glyph, i) => {

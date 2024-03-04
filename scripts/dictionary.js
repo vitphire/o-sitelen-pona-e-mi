@@ -1,11 +1,20 @@
 const Dictionary = {
+    /**
+     * Returns the definition of a given glyph.
+     * @param glyph
+     * @returns {string}
+     */
     getDefinition(glyph) {
         return this.definitions.get(glyph);
     },
 
+    /**
+     * Returns an array of all glyphs that start with the given letter.
+     * @param {string} letter
+     * @returns {string[]}
+     */
     getGlyphs(letter) {
         const glyphs = [];
-        // get all glyph options that start with the letter
         for (let definition of this.definitions.entries()) {
             const [glyph, _] = definition;
             if (glyph.startsWith(letter)) {

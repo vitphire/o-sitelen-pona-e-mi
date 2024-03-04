@@ -1,5 +1,17 @@
-const scrollPositions = []; // used for setting the scroll position of each letter when the name is changed
+/**
+ * Used for setting the scroll position of each letter when the name is changed.
+ *
+ * The scroll position is the index of the topmost visible glyph.
+ * @type {number[]}
+ */
+const scrollPositions = [];
 
+/**
+ * The index of the selected glyph in the name letter.
+ * @param nameLetter {NameLetter} - The name letter element
+ * @param scrollPos {number} - The scroll position, can be fractional
+ * @returns {number} - The scroll position modulo the number of glyphs
+ */
 function setScrollPositionLooped(nameLetter, scrollPos) {
     nameLetter.currentScrollPos = scrollPos;
     const scrollPosMod = mod(scrollPos, nameLetter.letterGlyphCount);
@@ -12,9 +24,9 @@ function scrollLetterTo(nameLetter, scrollPos, animationParams = null) {
     scrollPositions[letterIndex] = Math.round(scrollPos);
     if (!nameLetter.isScrolling) {
         nameLetter.isScrolling = true;
-        const f = animationParams?.f ?? 5;
-        const zeta = animationParams?.zeta ?? 1;
-        const r = animationParams?.r ?? 0.1;
+        const f = animationParams?.f;
+        const zeta = animationParams?.zeta;
+        const r = animationParams?.r;
         scrollAnimation(nameLetter, f, zeta, r).then(_ => nameLetter.isScrolling = false);
     }
     onGlyphSelectionChange();
@@ -35,10 +47,10 @@ function scrollLetterToGlyph(nameLetter, glyph) {
 
 function scrollLetterBy(nameLetter, number, animationParams = null) {
     const scrollPos = scrollPositions[nameLetter.letterIndex];
-    scrollLetterTo(nameLetter, parseInt(scrollPos) + number, animationParams);
+    scrollLetterTo(nameLetter, scrollPos + number, animationParams);
 }
 
-async function scrollAnimation(nameLetter,
+async function  scrollAnimation(nameLetter,
                                f = null,
                                zeta = null,
                                r = null) {
@@ -51,7 +63,9 @@ async function scrollAnimation(nameLetter,
 
     f = f ?? 5;
     zeta = zeta ?? 1;
-    r = r ?? 0.1;
+    r = r ?? 0;
+
+    console.log(f,zeta,r)
 
     const k1 = zeta / (Math.PI * f);
     const k2 = 1 / (4 * Math.PI * Math.PI * f * f);

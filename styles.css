@@ -250,11 +250,8 @@ button:active {
 }
 #title-settings-row #settings-button {
   margin-left: auto;
-  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
-  font-size: 36px;
-  width: 56px;
-  height: 56px;
-  padding: 0;
+  font-size: 24px;
+  padding: 6px 12px;
   --background: var(--main-bg);
   color: var(--main-text);
 }

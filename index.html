@@ -16,8 +16,15 @@
     <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf" as="font" type="font/ttf" crossorigin>
 
-    <script src="dictionary.js"></script>
-    <script src="script.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/dictionary.js"></script>
+    <script src="scripts/input-validation.js"></script>
+    <script src="scripts/functionalities/reset-randomize.js"></script>
+    <script src="scripts/functionalities/copy-glyphs.js"></script>
+    <script src="scripts/functionalities/scrolling.js"></script>
+    <script src="scripts/dom-setters/set-letters.js"></script>
+    <script src="scripts/dom-setters/set-definitions.js"></script>
+    <script src="scripts/main.js"></script>
 </head>
 <body>
 <main>
@@ -37,7 +44,7 @@
                 <div id="status-text--uncommon" class="lexend">Uncommon!</div>
                 <div id="status-text--invalid" class="lexend">Invalid</div>
             </div>
-            <button id="reset-button" class="lexend" onclick="resetOptions();">Reset</button>
+            <button id="reset-button" class="lexend" onclick="resetRandomize();">Reset</button>
             <button id="randomize-button" class="lexend" onclick="randomizeOptions();">Randomize</button>
         </div>
     </div>

@@ -42,6 +42,11 @@ function setLetters(letters) {
  * Class that represents a letter scroller.
  */
 class NameLetter extends HTMLDivElement {
+    letterIndex;
+    letterGlyphCount;
+    isScrolling;
+    currentScrollPos;
+
     onScroll(e) {
         scrollLetterBy(this, Math.sign(e.deltaY));
         e.preventDefault();

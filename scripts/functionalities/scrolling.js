@@ -50,7 +50,7 @@ function scrollLetterBy(nameLetter, number, animationParams = null) {
     scrollLetterTo(nameLetter, scrollPos + number, animationParams);
 }
 
-async function  scrollAnimation(nameLetter,
+async function scrollAnimation(nameLetter,
                                f = null,
                                zeta = null,
                                r = null) {
@@ -58,26 +58,16 @@ async function  scrollAnimation(nameLetter,
     // https://youtu.be/KPoeNZZ6H4s
 
     const letterIndex = nameLetter.letterIndex;
-
     const timeScale = 0.001;
 
     f = f ?? 5;
     zeta = zeta ?? 1;
     r = r ?? 0;
 
-    console.log(f,zeta,r)
-
-    const k1 = zeta / (Math.PI * f);
-    const k2 = 1 / (4 * Math.PI * Math.PI * f * f);
-    const k3 = (r * zeta) / (2 * Math.PI * f);
-
-    const epsilon = 0.001;
-
     //initialization
-    let scrollPos = nameLetter.currentScrollPos;
-    let scrollVelocity = 0;
     let prevTime = performance.now();
-    let prevX = scrollPos;
+    const sOD =
+        new SecondOrderDynamics(f, zeta, r, nameLetter.currentScrollPos);
 
     while (true) {
         const time = performance.now();
@@ -85,25 +75,62 @@ async function  scrollAnimation(nameLetter,
         prevTime = time;
 
         const x = scrollPositions[letterIndex];
-        const dx = x - prevX;
-        prevX = x;
 
-        const k2Stable = Math.max(k2, 0.5 * dt * (dt + k1), dt * k1); // clamp k2 to prevent instability
+        setScrollPositionLooped(nameLetter, sOD.update(dt, x));
 
-        scrollPos += scrollVelocity * dt;
-        const scrollAcc = (x + (k3 * dx) - scrollPos - (k1 * scrollVelocity)) / k2Stable;
-        scrollVelocity += scrollAcc * dt;
-
-        setScrollPositionLooped(nameLetter, scrollPos);
-
-        if (Math.abs(scrollVelocity) < epsilon &&
-            Math.abs(scrollPos - x) < epsilon) {
-            const p = setScrollPositionLooped(nameLetter, x);
-            setScrollPositionLooped(nameLetter, p);
-            scrollPositions[letterIndex] = p;
+        if (sOD.isConverged()) {
+            scrollPositions[letterIndex] =
+                setScrollPositionLooped(nameLetter,
+                    setScrollPositionLooped(nameLetter, x));
             break;
         } else {
             await new Promise(r => setTimeout(r, 1));
         }
+    }
+}
+
+class SecondOrderDynamics {
+    xp; // previous input
+    y; yd; // current position and velocity
+    k1; k2; k3; // dynamics constants
+    tCritical; // critical stable time step
+    epsilon; // convergence threshold
+
+    constructor(f, zeta, r, x0) {
+        this.k1 = zeta / (Math.PI * f);
+        this.k2 = 1 / (2 * Math.PI * f) ^ 2;
+        this.k3 = r * zeta / (2 * Math.PI * f);
+
+        this.tCritical = 0.8 * (Math.sqrt(4 * this.k2 + this.k1 * this.k1) - this.k1);
+        this.epsilon = 0.001;
+
+        this.xp = x0;
+        this.y = this.xp;
+        this.yd = 0;
+    }
+
+    /**
+     * update the state of the system
+     * @param T - the time difference since the last step
+     * @param x - the "target" position
+     * @param xd - the "target" velocity
+     */
+    update(T, x, xd = null) {
+        if (xd === null) {
+            xd = (x - this.xp) / T;
+            this.xp = x;
+        }
+        const iterations = Math.ceil(T / this.tCritical);
+        const dt = T / iterations;
+        for (let i = 0; i < iterations; i++) {
+            this.y = this.y + dt * this.yd
+            const acc = (x + this.k3 * xd - this.y - this.k1 * this.yd) / this.k2;
+            this.yd += dt * acc;
+        }
+        return this.y;
+    }
+
+    isConverged() {
+        return Math.abs(this.yd) < this.epsilon;
     }
 }

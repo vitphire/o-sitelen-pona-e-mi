@@ -75,8 +75,20 @@ $pastel-dark-gray: #2a2a2a;
 $pastel-dark-gray-2: #141516;
 $pastel-black: #000000;
 
-@media (prefers-color-scheme: dark) {
-  :root {
+:root {
+  --reset-button-bg: #{$pastel-dark-red};
+  --reset-button-text: #{$pastel-white};
+  --randomize-button-bg: #{$pastel-dark-purple};
+  --randomize-button-text: #{$pastel-white};
+  --copy-button-bg: #{$pastel-dark-blue};
+  --copy-button-text: #{$pastel-white};
+  --success-popup-text: #{$pastel-white};
+}
+
+@mixin theme-vars($theme) {
+  $tid: 0;
+  @if ($theme == "dark") {
+    $tid: 1;
     --main-bg: #{$pastel-dark-gray-2};
     --main-text: #{$pastel-light-gray};
     --input-bg: #{$pastel-dark-gray};
@@ -86,11 +98,7 @@ $pastel-black: #000000;
     --letter-border-color: #{$pastel-gray};
     --success-popup-bg: #{transparentize($pastel-dark-gray, 0.2)};
     --button-border-color: #{$pastel-gray};
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
+  } @else {
     --main-bg: #{$pastel-off-white};
     --main-text: #{$pastel-black};
     --input-bg: #{$light-pastel-red};
@@ -101,16 +109,13 @@ $pastel-black: #000000;
     --success-popup-bg: #{transparentize($pastel-black, 0.3)};
     --button-border-color: #{$pastel-black};
   }
-}
-
-:root {
-  --reset-button-bg: #{$pastel-dark-red};
-  --reset-button-text: #{$pastel-white};
-  --randomize-button-bg: #{$pastel-dark-purple};
-  --randomize-button-text: #{$pastel-white};
-  --copy-button-bg: #{$pastel-dark-blue};
-  --copy-button-text: #{$pastel-white};
-  --success-popup-text: #{$pastel-white};
+  @for $i from 1 through 9 {
+    @each $g, $p, $j in "fg" "color" $tid, "bg" "background-color" 1-$tid {
+      .l-#{$g}-#{$i} {
+        #{$p}: nth($letter-colors, $i * 2 - $j);
+      }
+    }
+  }
 }
 
 $letter-colors: $pastel-lime, $pastel-dark-lime,
@@ -123,18 +128,19 @@ $pastel-blue-2, $pastel-dark-blue-2,
 $pastel-yellow, $pastel-dark-yellow,
 $pastel-magenta, $pastel-dark-magenta;
 
-@each $theme, $tid in "light" 0, "dark" 1 {
-  @media (prefers-color-scheme: #{$theme}) {
-    @for $i from 1 through 9 {
-      @each $g, $p, $j in "fg" "color" $tid, "bg" "background-color" 1-$tid {
-        .l-#{$g}-#{$i} {
-          #{$p}: nth($letter-colors, $i * 2 - $j);
-        }
+$themes: "light", "dark";
+html {
+  @each $theme in $themes {
+    &:not(.theme-light, .theme-dark) {
+      @media (prefers-color-scheme: #{$theme}) {
+        @include theme-vars($theme);
       }
+    }
+    &.theme-#{$theme} {
+      @include theme-vars($theme);
     }
   }
 }
-
 
 $visible-glyph-count: 4;
 
@@ -209,7 +215,8 @@ button {
 #title-settings-row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;;
+  align-items: flex-end;
   margin: 0 0 20px 0;
 
   h1 {

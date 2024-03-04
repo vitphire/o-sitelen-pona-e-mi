@@ -1,0 +1,40 @@
+/* Original color set (this was adjusted to pass WCAG AAA for contrast with black and white)
+    '#A4BF8A', '#A6374B', '#0D688C',
+    '#4B4073', '#3A9E7A', '#C26747',
+    '#2D4F94', '#BD9A5C', '#6C3570'
+ */
+
+$gray: #404040;
+
+// These all pass WCAG AAA for contrast with black
+$magenta: #ce7eb3;
+$purple: #a18cd1;
+$blue: #6f96ec;
+$blue-2: #6ec0cf;
+$green: #74d3ae;
+$lime: #b0d87f;
+$yellow: #f5eaa6;
+$orange: #f0aa7f;
+$red: #e66460;
+
+$white: #ffffff;
+$light-gray: #dddddd;
+$light-gray-2: #999999;
+$off-white: #f6e7cb;
+$light-red: #f6d0cb;
+
+// These all pass WCAG AAA for contrast with white
+$dark-magenta: #7a3e6c;
+$dark-purple: #594893;
+$dark-blue: #0a4885;
+$dark-blue-2: #0b6079;
+$dark-green: #21634E;
+$dark-green-2: #0c4200;
+$dark-lime: #3d610a;
+$dark-yellow: #625806;
+$dark-orange: #8A460F;
+$dark-red: #973030;
+
+$dark-gray: #2a2a2a;
+$dark-gray-2: #141516;
+$black: #000000;

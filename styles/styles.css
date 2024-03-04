@@ -1,32 +1,32 @@
 @font-face {
   font-family: "sitelen-seli-kiwen--asuki";
-  src: url(sitelen-seli-kiwen/sitelenselikiwenasuki.eot);
-  src: url(sitelen-seli-kiwen/sitelenselikiwenasuki.ttf) format("truetype");
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenasuki.eot);
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenasuki.ttf) format("truetype");
 }
 @font-face {
   font-family: "sitelen-seli-kiwen--atuki";
-  src: url(sitelen-seli-kiwen/sitelenselikiwenatuki.eot);
-  src: url(sitelen-seli-kiwen/sitelenselikiwenatuki.ttf) format("truetype");
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenatuki.eot);
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenatuki.ttf) format("truetype");
 }
 @font-face {
   font-family: "sitelen-seli-kiwen--juniko";
-  src: url(sitelen-seli-kiwen/sitelenselikiwenjuniko.eot);
-  src: url(sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf) format("truetype");
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenjuniko.eot);
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf) format("truetype");
 }
 @font-face {
   font-family: "sitelen-seli-kiwen-mono--asuki";
-  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot);
-  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf) format("truetype");
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot);
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf) format("truetype");
 }
 @font-face {
   font-family: "sitelen-seli-kiwen-mono--atuki";
-  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot);
-  src: url(sitelen-seli-kiwen/sitelenselikiwenmonoatuki.ttf) format("truetype");
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot);
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenmonoatuki.ttf) format("truetype");
 }
 @font-face {
   font-family: "sitelen-seli-kiwen-mono--juniko";
-  src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot);
-  src: url(sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf) format("truetype");
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot);
+  src: url(../sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf) format("truetype");
 }
 /* Original color set (this was adjusted to pass WCAG AAA for contrast with black and white)
     '#A4BF8A', '#A6374B', '#0D688C',
@@ -308,6 +308,81 @@ html.theme-dark .l-bg-9 {
   background-color: #7a3e6c;
 }
 
+html, body {
+  background: var(--main-bg);
+  color: var(--main-text);
+}
+
+button {
+  border-color: var(--button-border-color);
+  background: var(--background);
+}
+button:hover {
+  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.1), hsla(0, 0%, 100%, 0.1)) var(--background);
+}
+button:active {
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.15), hsla(0, 0%, 0%, 0.15)) var(--background);
+}
+
+#settings-button {
+  --background: var(--main-bg);
+  color: var(--main-text);
+}
+
+#reset-button {
+  --background: var(--reset-button-bg);
+  color: var(--reset-button-text);
+}
+
+#randomize-button {
+  --background: var(--randomize-button-bg);
+  color: var(--randomize-button-text);
+}
+
+#name-input-container .text-box-container {
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+#name-text-box {
+  color: transparent;
+  caret-color: var(--input-text);
+}
+
+#name-text-box-size-calibration::before {
+  color: var(--input-text);
+  opacity: 0.5;
+}
+
+#status-text--valid, #status-text--uncommon {
+  color: var(--status-good);
+}
+#status-text--invalid {
+  color: var(--status-bad);
+}
+
+.valid .text-box-container, .uncommon .text-box-container {
+  border-color: var(--status-good);
+}
+
+.invalid .text-box-container {
+  border-color: var(--status-bad);
+}
+
+#copy-button {
+  --background: var(--copy-button-bg);
+  color: var(--copy-button-text);
+}
+
+#success-popup {
+  background: var(--success-popup-bg);
+  color: var(--success-popup-text);
+}
+
+name-letter {
+  border-color: var(--letter-border-color);
+}
+
 .no-select {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -321,11 +396,6 @@ html.theme-dark .l-bg-9 {
   justify-content: flex-start;
   align-items: center;
   margin: 0;
-}
-
-html, body {
-  background: var(--main-bg);
-  color: var(--main-text);
 }
 
 main {
@@ -351,19 +421,11 @@ h1 {
 button {
   --border-width: 4px;
   border-style: solid;
-  border-color: var(--button-border-color);
   border-width: var(--border-width);
   border-radius: 20px;
   font-weight: 400;
   font-size: 24px;
   padding: 0.4em 0.5em;
-  background: var(--background);
-}
-button:hover {
-  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.1), hsla(0, 0%, 100%, 0.1)) var(--background);
-}
-button:active {
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.15), hsla(0, 0%, 0%, 0.15)) var(--background);
 }
 
 #title-settings-row {
@@ -380,8 +442,6 @@ button:active {
   margin-left: auto;
   font-size: 24px;
   padding: 6px 12px;
-  --background: var(--main-bg);
-  color: var(--main-text);
 }
 
 #name-input-container {
@@ -403,14 +463,6 @@ button:active {
   padding: 16px 20px;
   border-radius: 24px;
 }
-#name-input-container .row button#reset-button {
-  --background: var(--reset-button-bg);
-  color: var(--reset-button-text);
-}
-#name-input-container .row button#randomize-button {
-  --background: var(--randomize-button-bg);
-  color: var(--randomize-button-text);
-}
 #name-input-container .text-box-container {
   margin: 12px 0;
   display: flex;
@@ -421,8 +473,6 @@ button:active {
   border-width: 3px;
   border-style: solid;
   border-radius: 24px;
-  background: var(--input-bg);
-  color: var(--input-text);
   position: relative;
 }
 #name-input-container #name-text-box, #name-input-container #name-text-box-size-calibration {
@@ -438,33 +488,17 @@ button:active {
   position: absolute;
   left: 0;
   width: calc(100% - 24px);
-  color: transparent;
-  caret-color: var(--input-text);
 }
 #name-input-container #name-text-box-size-calibration {
   white-space: pre;
 }
 #name-input-container #name-text-box-size-calibration:empty::before {
   content: "jan Sonja";
-  color: var(--input-text);
-  opacity: 0.5;
-}
-#name-input-container #status-text--valid, #name-input-container #status-text--uncommon {
-  color: var(--status-good);
-}
-#name-input-container #status-text--invalid {
-  color: var(--status-bad);
 }
 #name-input-container #status-text--valid, #name-input-container #status-text--uncommon, #name-input-container #status-text--invalid {
   font-size: 32px;
   margin: 12px;
   display: none;
-}
-#name-input-container.valid .text-box-container, #name-input-container.uncommon .text-box-container {
-  border-color: var(--status-good);
-}
-#name-input-container.invalid .text-box-container {
-  border-color: var(--status-bad);
 }
 #name-input-container.valid #status-text--valid, #name-input-container.uncommon #status-text--uncommon, #name-input-container.invalid #status-text--invalid {
   display: block;
@@ -514,8 +548,6 @@ button:active {
   display: inline;
 }
 .results-container .glyph-select-section #glyph-selector #copy-button {
-  --background: var(--copy-button-bg);
-  color: var(--copy-button-text);
   position: absolute;
   pointer-events: auto;
 }
@@ -523,8 +555,6 @@ button:active {
   position: absolute;
   left: 12px;
   bottom: calc(100% + 12px);
-  background: var(--success-popup-bg);
-  color: var(--success-popup-text);
   z-index: 1;
   padding: 4px 8px;
   border-radius: 8px;
@@ -559,7 +589,6 @@ button:active {
   --border-width: 4px;
   border-width: var(--border-width);
   border-style: solid;
-  border-color: var(--letter-border-color);
   border-radius: 18px;
   top: 0;
   left: calc(0.9em * (var(--letter-index) + 2));

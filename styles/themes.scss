@@ -1,0 +1,153 @@
+@use "pastel";
+
+:root {
+  --reset-button-bg: #{pastel.$dark-red};
+  --reset-button-text: #{pastel.$white};
+  --randomize-button-bg: #{pastel.$dark-purple};
+  --randomize-button-text: #{pastel.$white};
+  --copy-button-bg: #{pastel.$dark-blue};
+  --copy-button-text: #{pastel.$white};
+  --success-popup-text: #{pastel.$white};
+}
+
+@mixin theme-vars($theme) {
+  $tid: 0;
+  @if ($theme == "dark") {
+    $tid: 1;
+    --main-bg: #{pastel.$dark-gray-2};
+    --main-text: #{pastel.$light-gray};
+    --input-bg: #{pastel.$dark-gray};
+    --input-text: #{pastel.$white};
+    --status-good: #{pastel.$green};
+    --status-bad: #{pastel.$red};
+    --letter-border-color: #{pastel.$gray};
+    --success-popup-bg: #{transparentize(pastel.$dark-gray, 0.2)};
+    --button-border-color: #{pastel.$gray};
+  } @else {
+    --main-bg: #{pastel.$off-white};
+    --main-text: #{pastel.$black};
+    --input-bg: #{pastel.$light-red};
+    --input-text: #{pastel.$black};
+    --status-good: #{pastel.$dark-green-2};
+    --status-bad: #{pastel.$dark-red};
+    --letter-border-color: #{pastel.$black};
+    --success-popup-bg: #{transparentize(pastel.$black, 0.3)};
+    --button-border-color: #{pastel.$black};
+  }
+  @for $i from 1 through 9 {
+    @each $g, $p, $j in "fg" "color" $tid, "bg" "background-color" 1-$tid {
+      .l-#{$g}-#{$i} {
+        #{$p}: nth($letter-colors, $i * 2 - $j);
+      }
+    }
+  }
+}
+
+$letter-colors: pastel.$lime, pastel.$dark-lime,
+pastel.$red, pastel.$dark-red,
+pastel.$blue, pastel.$dark-blue,
+pastel.$purple, pastel.$dark-purple,
+pastel.$green, pastel.$dark-green,
+pastel.$orange, pastel.$dark-orange,
+pastel.$blue-2, pastel.$dark-blue-2,
+pastel.$yellow, pastel.$dark-yellow,
+pastel.$magenta, pastel.$dark-magenta;
+
+$themes: "light", "dark";
+html {
+  @each $theme in $themes {
+    &:not(.theme-light, .theme-dark) {
+      @media (prefers-color-scheme: #{$theme}) {
+        @include theme-vars($theme);
+      }
+    }
+    &.theme-#{$theme} {
+      @include theme-vars($theme);
+    }
+  }
+}
+
+html, body {
+  background: var(--main-bg);
+  color: var(--main-text);
+}
+
+button {
+  border-color: var(--button-border-color);
+  background: var(--background);
+
+  &:hover {
+    $fade-to: hsl(0, 0%, 100%, 0.1);
+    background: linear-gradient(to top, $fade-to, $fade-to
+    ) var(--background);
+  }
+
+  &:active {
+    $fade-to: hsl(0, 0%, 0%, 0.15);
+    background: linear-gradient(to top, $fade-to, $fade-to
+    ) var(--background);
+  }
+}
+
+#settings-button {
+  --background: var(--main-bg);
+  color: var(--main-text);
+}
+
+#reset-button {
+  --background: var(--reset-button-bg);
+  color: var(--reset-button-text);
+}
+
+#randomize-button {
+  --background: var(--randomize-button-bg);
+  color: var(--randomize-button-text);
+}
+
+#name-input-container .text-box-container {
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+#name-text-box {
+  // make text invisible, but the cursor still visible
+  color: transparent;
+  caret-color: var(--input-text);
+}
+
+#name-text-box-size-calibration::before {
+  color: var(--input-text);
+  opacity: 0.5;
+}
+
+#status-text {
+  &--valid, &--uncommon {
+    color: var(--status-good);
+  }
+
+  &--invalid {
+    color: var(--status-bad);
+  }
+}
+
+.valid .text-box-container, .uncommon .text-box-container {
+  border-color: var(--status-good);
+}
+
+.invalid .text-box-container {
+  border-color: var(--status-bad);
+}
+
+#copy-button {
+  --background: var(--copy-button-bg);
+  color: var(--copy-button-text);
+}
+
+#success-popup {
+  background: var(--success-popup-bg);
+  color: var(--success-popup-text);
+}
+
+name-letter {
+  border-color: var(--letter-border-color);
+}

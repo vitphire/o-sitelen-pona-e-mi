@@ -71,7 +71,7 @@ async function scrollAnimation(nameLetter,
 
     while (true) {
         const time = performance.now();
-        const dt = (time - prevTime) * timeScale;
+        const dt = Math.max(1, (time - prevTime)) * timeScale;
         prevTime = time;
 
         const x = scrollPositions[letterIndex];
@@ -98,7 +98,7 @@ class SecondOrderDynamics {
 
     constructor(f, zeta, r, x0) {
         this.k1 = zeta / (Math.PI * f);
-        this.k2 = 1 / (2 * Math.PI * f) ^ 2;
+        this.k2 = 1 / (2 * Math.PI * f) ** 2;
         this.k3 = r * zeta / (2 * Math.PI * f);
 
         this.tCritical = 0.8 * (Math.sqrt(4 * this.k2 + this.k1 * this.k1) - this.k1);

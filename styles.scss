@@ -123,27 +123,18 @@ $pastel-blue-2, $pastel-dark-blue-2,
 $pastel-yellow, $pastel-dark-yellow,
 $pastel-magenta, $pastel-dark-magenta;
 
-@media (prefers-color-scheme: dark) {
-  @for $i from 1 through 9 {
-    .l-fg-#{$i} {
-      color: nth($letter-colors, ($i * 2) - 1);
-    }
-    .l-bg-#{$i} {
-      background-color: nth($letter-colors, $i * 2);
+@each $theme, $tid in "light" 0, "dark" 1 {
+  @media (prefers-color-scheme: #{$theme}) {
+    @for $i from 1 through 9 {
+      @each $g, $p, $j in "fg" "color" $tid, "bg" "background-color" 1-$tid {
+        .l-#{$g}-#{$i} {
+          #{$p}: nth($letter-colors, $i * 2 - $j);
+        }
+      }
     }
   }
 }
 
-@media (prefers-color-scheme: light) {
-  @for $i from 1 through 9 {
-    .l-fg-#{$i} {
-      color: nth($letter-colors, $i * 2);
-    }
-    .l-bg-#{$i} {
-      background-color: nth($letter-colors, ($i * 2) - 1);
-    }
-  }
-}
 
 $visible-glyph-count: 4;
 

@@ -69,62 +69,6 @@
   --success-popup-text: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  .l-fg-1 {
-    color: #b0d87f;
-  }
-  .l-bg-1 {
-    background-color: #3d610a;
-  }
-  .l-fg-2 {
-    color: #e66460;
-  }
-  .l-bg-2 {
-    background-color: #973030;
-  }
-  .l-fg-3 {
-    color: #6f96ec;
-  }
-  .l-bg-3 {
-    background-color: #0a4885;
-  }
-  .l-fg-4 {
-    color: #a18cd1;
-  }
-  .l-bg-4 {
-    background-color: #594893;
-  }
-  .l-fg-5 {
-    color: #74d3ae;
-  }
-  .l-bg-5 {
-    background-color: #21634E;
-  }
-  .l-fg-6 {
-    color: #f0aa7f;
-  }
-  .l-bg-6 {
-    background-color: #8A460F;
-  }
-  .l-fg-7 {
-    color: #6ec0cf;
-  }
-  .l-bg-7 {
-    background-color: #0b6079;
-  }
-  .l-fg-8 {
-    color: #f5eaa6;
-  }
-  .l-bg-8 {
-    background-color: #625806;
-  }
-  .l-fg-9 {
-    color: #ce7eb3;
-  }
-  .l-bg-9 {
-    background-color: #7a3e6c;
-  }
-}
 @media (prefers-color-scheme: light) {
   .l-fg-1 {
     color: #3d610a;
@@ -179,6 +123,62 @@
   }
   .l-bg-9 {
     background-color: #ce7eb3;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .l-fg-1 {
+    color: #b0d87f;
+  }
+  .l-bg-1 {
+    background-color: #3d610a;
+  }
+  .l-fg-2 {
+    color: #e66460;
+  }
+  .l-bg-2 {
+    background-color: #973030;
+  }
+  .l-fg-3 {
+    color: #6f96ec;
+  }
+  .l-bg-3 {
+    background-color: #0a4885;
+  }
+  .l-fg-4 {
+    color: #a18cd1;
+  }
+  .l-bg-4 {
+    background-color: #594893;
+  }
+  .l-fg-5 {
+    color: #74d3ae;
+  }
+  .l-bg-5 {
+    background-color: #21634E;
+  }
+  .l-fg-6 {
+    color: #f0aa7f;
+  }
+  .l-bg-6 {
+    background-color: #8A460F;
+  }
+  .l-fg-7 {
+    color: #6ec0cf;
+  }
+  .l-bg-7 {
+    background-color: #0b6079;
+  }
+  .l-fg-8 {
+    color: #f5eaa6;
+  }
+  .l-bg-8 {
+    background-color: #625806;
+  }
+  .l-fg-9 {
+    color: #ce7eb3;
+  }
+  .l-bg-9 {
+    background-color: #7a3e6c;
   }
 }
 .no-select {

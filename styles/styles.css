@@ -402,7 +402,7 @@ main {
   margin: 32px 32px;
 }
 
-h1, h2, p, .lexend {
+.lexend {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;

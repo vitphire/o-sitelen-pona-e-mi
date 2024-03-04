@@ -4,7 +4,7 @@
  */
 function getSelectedGlyphs() {
     const nameLetters = document.getElementById('glyph-selector')
-        .querySelectorAll('.name-letter');
+        .querySelectorAll('name-letter');
     let nameSelectedGlyphs = [];
     for (let i = 0; i < nameLetters.length; i++) {
         let letter = nameLetters[i];

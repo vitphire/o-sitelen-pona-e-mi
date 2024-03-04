@@ -431,7 +431,7 @@ button {
 
       height: calc($visible-glyph-count * $glyph-height);
 
-      .name-letter {
+      name-letter {
         --letter-index: 0;
         --letter-scroll: 0;
         --letter-glyph-count: 1;

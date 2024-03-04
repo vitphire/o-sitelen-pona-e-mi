@@ -3,7 +3,7 @@
  */
 function resetOptions() {
     for (let nameLetter of document.getElementById('glyph-selector')
-        .querySelectorAll('.name-letter')) {
+        .querySelectorAll('name-letter')) {
         scrollLetterTo(nameLetter, (nameLetter.letterGlyphCount - SELECTED_GLYPH_INDEX),
             {f: 8, zeta: 1, r: 0});
     }
@@ -14,7 +14,7 @@ function resetOptions() {
  */
 function randomizeOptions() {
     for (let nameLetter of document.getElementById('glyph-selector')
-        .querySelectorAll('.name-letter')) {
+        .querySelectorAll('name-letter')) {
         const glyphCount = nameLetter.letterGlyphCount;
         let scrollBy = Math.floor(Math.random() * glyphCount * 2) + 1;
         if (Math.random() > 0.5) {

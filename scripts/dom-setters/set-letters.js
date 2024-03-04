@@ -13,7 +13,7 @@ function setNoun(text) {
 function updateOutlineSize() {
     const nameOutline = document.getElementById('name-outline');
     const nameLetters = document.getElementById('glyph-selector')
-        .querySelectorAll('.name-letter');
+        .querySelectorAll('name-letter');
     nameOutline.textContent = '[' + '  '.repeat(nameLetters.length) + ' ]'
 }
 
@@ -24,16 +24,12 @@ function updateOutlineSize() {
 function setLetters(letters) {
     const nameContainer = document.getElementById('glyph-selector');
 
-    nameContainer.querySelectorAll('.name-letter')
-        .forEach(el => el.remove());
+    nameContainer.querySelectorAll('name-letter').forEach(el => el.remove());
 
-    // for each letter
-    for (let i = 0; i < letters.length; i++) {
-        const letter = letters[i];
-        let glyphs = Dictionary.getGlyphs(letter);
-        let nameLetter = new NameLetter(i, glyphs);
-        nameContainer.appendChild(nameLetter);
-    }
+    [...letters].forEach((letter, i) => {
+        nameContainer.appendChild(new NameLetter(i, letters[i]));
+    });
+
     updateOutlineSize();
     onGlyphSelectionChange();
 }
@@ -41,7 +37,7 @@ function setLetters(letters) {
 /**
  * Class that represents a letter scroller.
  */
-class NameLetter extends HTMLDivElement {
+class NameLetter extends HTMLElement {
     letterIndex;
     letterGlyphCount;
     isScrolling;
@@ -52,9 +48,9 @@ class NameLetter extends HTMLDivElement {
         e.preventDefault();
     }
 
-    constructor(index, glyphs) {
+    constructor(index, letter) {
         super();
-        this.classList.add('name-letter');
+        const glyphs = Dictionary.getGlyphs(letter);
         while (scrollPositions.length <= index) {
             // Default scroll position makes the first glyph selected
             scrollPositions.push(glyphs.length - SELECTED_GLYPH_INDEX);
@@ -90,4 +86,4 @@ class NameLetter extends HTMLDivElement {
     }
 }
 
-customElements.define('name-letter', NameLetter, {extends: 'div'});
+customElements.define('name-letter', NameLetter);

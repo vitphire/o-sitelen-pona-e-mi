@@ -550,7 +550,7 @@ button:active {
     visibility: hidden;
   }
 }
-.results-container .glyph-select-section #glyph-selector .name-letter {
+.results-container .glyph-select-section #glyph-selector name-letter {
   --letter-index: 0;
   --letter-scroll: 0;
   --letter-glyph-count: 1;
@@ -570,11 +570,11 @@ button:active {
   overflow: hidden;
   z-index: -1;
 }
-.results-container .glyph-select-section #glyph-selector .name-letter > div {
+.results-container .glyph-select-section #glyph-selector name-letter > div {
   transform: translateY(calc(0px - 1.2em * var(--letter-scroll)));
   height: calc(1.2em * var(--letter-glyph-count));
 }
-.results-container .glyph-select-section #glyph-selector .name-letter > div > .glyph {
+.results-container .glyph-select-section #glyph-selector name-letter > div > .glyph {
   height: 1.2em;
 }
 .results-container #definitions-section {

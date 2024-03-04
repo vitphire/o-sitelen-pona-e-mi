@@ -53,6 +53,9 @@ function randomizeOptions() {
         .querySelectorAll('.name-letter')) {
         const glyphCount = nameLetter.letterGlyphCount;
         let scrollBy = Math.floor(Math.random() * glyphCount * 2) + 1;
+        if (Math.random() > 0.5) {
+            scrollBy *= -1;
+        }
         scrollLetterBy(nameLetter, scrollBy, {f: 3, zeta: 1, r: 0.1});
     }
 }

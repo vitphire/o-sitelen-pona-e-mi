@@ -1,47 +1,55 @@
 @use "pastel";
 
+// Funky live theme switching
+
 :root {
-  --reset-button-bg: #{pastel.$dark-red};
-  --reset-button-text: #{pastel.$white};
-  --randomize-button-bg: #{pastel.$dark-purple};
-  --randomize-button-text: #{pastel.$white};
-  --copy-button-bg: #{pastel.$dark-blue};
-  --copy-button-text: #{pastel.$white};
-  --success-popup-text: #{pastel.$white};
+  &.theme-system {
+    @media (prefers-color-scheme: dark) {
+      --theme: "dark";
+    }
+    @media (prefers-color-scheme: light) {
+      --theme: "light";
+    }
+  }
+
+  &.theme-light {
+    --theme: "light";
+  }
+
+  &.theme-dark {
+    --theme: "dark";
+  }
 }
 
-@mixin theme-vars($theme) {
-  $tid: 0;
-  @if ($theme == "dark") {
-    $tid: 1;
-    --main-bg: #{pastel.$dark-gray-2};
-    --main-text: #{pastel.$light-gray};
-    --input-bg: #{pastel.$dark-gray};
-    --input-text: #{pastel.$white};
-    --status-good: #{pastel.$green};
-    --status-bad: #{pastel.$red};
-    --letter-border-color: #{pastel.$gray};
-    --success-popup-bg: #{transparentize(pastel.$dark-gray, 0.2)};
-    --button-border-color: #{pastel.$gray};
-  } @else {
-    --main-bg: #{pastel.$off-white};
-    --main-text: #{pastel.$black};
-    --input-bg: #{pastel.$light-red};
-    --input-text: #{pastel.$black};
-    --status-good: #{pastel.$dark-green-2};
-    --status-bad: #{pastel.$dark-red};
-    --letter-border-color: #{pastel.$black};
-    --success-popup-bg: #{transparentize(pastel.$black, 0.3)};
-    --button-border-color: #{pastel.$black};
-  }
-  @for $i from 1 through 9 {
-    @each $g, $p, $j in "fg" "color" $tid, "bg" "background-color" 1-$tid {
-      .l-#{$g}-#{$i} {
-        #{$p}: nth($letter-colors, $i * 2 - $j);
+@mixin th($property, $if-light, $if-dark) {
+  $path: &;
+  @at-root:root {
+    &:not(.theme-light, .theme-dark) {
+      #{$path} {
+        @media (prefers-color-scheme: light) {
+          #{$property}: #{$if-light};
+        }
+        @media (prefers-color-scheme: dark) {
+          #{$property}: #{$if-dark};
+        }
+      }
+    }
+
+    &.theme-light {
+      #{$path} {
+        #{$property}: #{$if-light};
+      }
+    }
+
+    &.theme-dark {
+      #{$path} {
+        #{$property}: #{$if-dark};
       }
     }
   }
 }
+
+// Letter colors
 
 $letter-colors: pastel.$lime, pastel.$dark-lime,
 pastel.$red, pastel.$dark-red,
@@ -53,101 +61,98 @@ pastel.$blue-2, pastel.$dark-blue-2,
 pastel.$yellow, pastel.$dark-yellow,
 pastel.$magenta, pastel.$dark-magenta;
 
-$themes: "light", "dark";
-html {
-  @each $theme in $themes {
-    &:not(.theme-light, .theme-dark) {
-      @media (prefers-color-scheme: #{$theme}) {
-        @include theme-vars($theme);
-      }
-    }
-    &.theme-#{$theme} {
-      @include theme-vars($theme);
-    }
+@for $i from 1 through 9 {
+  .letter-fg-color-#{$i} {
+    @include th(color, nth($letter-colors, $i * 2), nth($letter-colors, $i * 2 - 1));
+  }
+  .letter-bg-color-#{$i} {
+    @include th(background, nth($letter-colors, $i * 2 - 1), nth($letter-colors, $i * 2));
   }
 }
 
+
 html, body {
-  background: var(--main-bg);
-  color: var(--main-text);
+  @include th(background, pastel.$off-white, pastel.$dark-gray-2);
+  @include th(color, pastel.$black, pastel.$light-gray);
 }
 
 button {
-  border-color: var(--button-border-color);
-  background: var(--background);
-
-  &:hover {
-    $fade-to: hsl(0, 0%, 100%, 0.1);
-    background: linear-gradient(to top, $fade-to, $fade-to
-    ) var(--background);
-  }
-
-  &:active {
-    $fade-to: hsl(0, 0%, 0%, 0.15);
-    background: linear-gradient(to top, $fade-to, $fade-to
-    ) var(--background);
-  }
+  @include th(border-color, pastel.$black, pastel.$gray);
 }
 
 #settings-button {
-  --background: var(--main-bg);
-  color: var(--main-text);
+  @include th(background, pastel.$off-white, pastel.$dark-gray);
+  @include th(color, pastel.$black, pastel.$light-gray);
+
+  &:hover {
+    @include th(background,
+            darken(pastel.$off-white, 10%),
+            lighten(pastel.$dark-gray, 5%));
+  }
+
+  &:active {
+    @include th(background,
+            darken(pastel.$off-white, 20%),
+            darken(pastel.$dark-gray, 10%));
+  }
 }
 
-#reset-button {
-  --background: var(--reset-button-bg);
-  color: var(--reset-button-text);
-}
+@each $button, $color in "reset" pastel.$dark-red,
+"randomize" pastel.$dark-purple,
+"copy" pastel.$dark-blue {
+  @debug $button;
+  ##{$button}-button {
+    background: $color;
+    color: pastel.$white;
 
-#randomize-button {
-  --background: var(--randomize-button-bg);
-  color: var(--randomize-button-text);
+    &:hover {
+      background: lighten($color, 10%);
+    }
+
+    &:active {
+      background: darken($color, 10%);
+    }
+  }
 }
 
 #name-input-container .text-box-container {
-  background: var(--input-bg);
-  color: var(--input-text);
+  @include th(background, pastel.$light-red, pastel.$dark-gray);
+  @include th(color, pastel.$black, pastel.$light-gray);
 }
 
 #name-text-box {
-  // make text invisible, but the cursor still visible
   color: transparent;
-  caret-color: var(--input-text);
+  @include th(caret-color, pastel.$black, pastel.$light-gray);
 }
 
 #name-text-box-size-calibration::before {
-  color: var(--input-text);
+  @include th(color, pastel.$black, pastel.$light-gray);
   opacity: 0.5;
 }
 
-#status-text {
-  &--valid, &--uncommon {
-    color: var(--status-good);
-  }
-
-  &--invalid {
-    color: var(--status-bad);
-  }
+#status-text--valid, #status-text--uncommon {
+  @include th(color, pastel.$dark-green-2, pastel.$green);
 }
 
 .valid .text-box-container, .uncommon .text-box-container {
-  border-color: var(--status-good);
+  @include th(border-color, pastel.$dark-green-2, pastel.$green);
+}
+
+#status-text--invalid {
+  @include th(color, pastel.$dark-red, pastel.$red);
 }
 
 .invalid .text-box-container {
-  border-color: var(--status-bad);
-}
-
-#copy-button {
-  --background: var(--copy-button-bg);
-  color: var(--copy-button-text);
+  @include th(border-color, pastel.$dark-red, pastel.$red);
 }
 
 #success-popup {
-  background: var(--success-popup-bg);
-  color: var(--success-popup-text);
+  @include th(background,
+          transparentize(pastel.$black, 0.3),
+          transparentize(pastel.$dark-gray, 0.2));
+  color: pastel.$white;
 }
 
 name-letter {
-  border-color: var(--letter-border-color);
+  @include th(border-color, pastel.$black, pastel.$gray);
 }

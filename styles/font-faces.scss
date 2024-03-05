@@ -11,9 +11,7 @@ $font-files: (
   @font-face {
     font-family: "#{$font-name}";
     @each $ext, $format in (eot, "embedded-opentype"), (ttf, "truetype") {
-      @each $folder in "./" {
-        src: url("#{$folder}sitelen-seli-kiwen/#{$font-file}.#{$ext}") format("#{$format}");
-      }
+      src: url("./sitelen-seli-kiwen/#{$font-file}.#{$ext}") format("#{$format}");
     }
   }
 }

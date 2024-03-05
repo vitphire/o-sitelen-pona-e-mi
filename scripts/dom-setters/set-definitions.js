@@ -19,7 +19,7 @@ function setDefinitions(selectedGlyphs) {
         const definitionEl = document.createElement('div');
         definitionEl.appendChild(definitionWord);
         definitionEl.appendChild(definitionText);
-        definitionEl.classList.add('l-fg-' + (mod(i, COLOR_VARIANTS) + 1).toString());
+        definitionEl.classList.add('letter-fg-color-' + (mod(i, COLOR_VARIANTS) + 1).toString());
 
         definitionContainer.appendChild(definitionEl);
     });

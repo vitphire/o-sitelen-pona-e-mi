@@ -1,14 +1,10 @@
 $visible-glyph-count: 4;
 
-@mixin no-select {
+.no-select {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.no-select {
-  @include no-select;
 }
 
 .row {
@@ -165,7 +161,7 @@ button {
     align-items: center;
 
     #glyph-selector {
-      @include no-select;
+      @extend .no-select;
 
       $glyph-height: 1.2em;
 

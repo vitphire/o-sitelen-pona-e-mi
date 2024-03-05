@@ -60,7 +60,7 @@ class NameLetter extends HTMLElement {
         this.letterGlyphCount = glyphs.length;
         this.style.setProperty('--letter-glyph-count', this.letterGlyphCount.toString());
 
-        this.classList.add('l-bg-' + (mod(index, COLOR_VARIANTS) + 1).toString());
+        this.classList.add('letter-bg-color-' + (mod(index, COLOR_VARIANTS) + 1).toString());
         setScrollPositionLooped(this, scrollPositions[index]);
         this.isScrolling = false;
 

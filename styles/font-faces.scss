@@ -10,7 +10,7 @@ $font-files: (
 @each $font-name, $font-file in $font-files {
   @font-face {
     font-family: "#{$font-name}";
-    @each $folder in "", "../" {
+    @each $folder in "" {
       @each $ext, $format in (eot, "embedded-opentype"), (ttf, "truetype") {
         src: url("#{$folder}sitelen-seli-kiwen/#{$font-file}.#{$ext}") format(#{$format});
       }

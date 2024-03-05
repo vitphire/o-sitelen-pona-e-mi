@@ -1,32 +1,44 @@
 @font-face {
   font-family: "sitelen-seli-kiwen--asuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenasuki.eot") format(embedded-opentype);
   src: url("sitelen-seli-kiwen/sitelenselikiwenasuki.ttf") format(truetype);
+  src: url("sitelen-seli-kiwen/sitelenselikiwenasuki.eot") format(embedded-opentype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenasuki.ttf") format(truetype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenasuki.eot") format(embedded-opentype);
 }
 @font-face {
   font-family: "sitelen-seli-kiwen--atuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenatuki.eot") format(embedded-opentype);
   src: url("sitelen-seli-kiwen/sitelenselikiwenatuki.ttf") format(truetype);
+  src: url("sitelen-seli-kiwen/sitelenselikiwenatuki.eot") format(embedded-opentype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenatuki.ttf") format(truetype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenatuki.eot") format(embedded-opentype);
 }
 @font-face {
   font-family: "sitelen-seli-kiwen--juniko";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenjuniko.eot") format(embedded-opentype);
   src: url("sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf") format(truetype);
+  src: url("sitelen-seli-kiwen/sitelenselikiwenjuniko.eot") format(embedded-opentype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenjuniko.ttf") format(truetype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenjuniko.eot") format(embedded-opentype);
 }
 @font-face {
   font-family: "sitelen-seli-kiwen-mono--asuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot") format(embedded-opentype);
   src: url("sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf") format(truetype);
+  src: url("sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot") format(embedded-opentype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenmonoasuki.ttf") format(truetype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenmonoasuki.eot") format(embedded-opentype);
 }
 @font-face {
   font-family: "sitelen-seli-kiwen-mono--atuki";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot") format(embedded-opentype);
   src: url("sitelen-seli-kiwen/sitelenselikiwenmonoatuki.ttf") format(truetype);
+  src: url("sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot") format(embedded-opentype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenmonoatuki.ttf") format(truetype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenmonoatuki.eot") format(embedded-opentype);
 }
 @font-face {
   font-family: "sitelen-seli-kiwen-mono--juniko";
-  src: url("sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot") format(embedded-opentype);
   src: url("sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf") format(truetype);
+  src: url("sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot") format(embedded-opentype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenmonojuniko.ttf") format(truetype);
+  src: url("../sitelen-seli-kiwen/sitelenselikiwenmonojuniko.eot") format(embedded-opentype);
 }
 /* Original color set (this was adjusted to pass WCAG AAA for contrast with black and white)
     '#A4BF8A', '#A6374B', '#0D688C',

@@ -15,15 +15,15 @@ $visible-glyph-count: 4;
   margin: 0;
 }
 
-main {
-  margin: 32px 32px;
-}
-
 .lexend {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   letter-spacing: 0.05em;
+}
+
+body {
+  margin: 32px 32px;
 }
 
 h2 {
@@ -46,14 +46,13 @@ button {
 }
 
 #title-settings-row {
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap-reverse;;
   align-items: flex-end;
   margin: 0 0 20px 0;
 
   h1 {
     flex-grow: 1;
+    margin-top: 0;
   }
 
   #settings-button {

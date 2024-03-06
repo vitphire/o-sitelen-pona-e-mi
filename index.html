@@ -27,56 +27,54 @@
     <script src="scripts/main.js"></script>
 </head>
 <body>
-<main>
-    <div class="row" id="title-settings-row">
-        <h1 class="lexend">o sitelen pona e mi!</h1>
-        <button id="settings-button" class="lexend" onclick="openSettings();">Settings</button>
+<div class="row" id="title-settings-row">
+    <h1 class="lexend">o sitelen pona e mi!</h1>
+    <button id="settings-button" class="lexend" onclick="openSettings();">Settings</button>
+</div>
+<h2 class="lexend">show potential glyph options for a toki pona name in sitelen pona</h2>
+<div id="name-input-container">
+    <label for="name-text-box" class="lexend">input your name here for options</label>
+    <div class="row">
+        <div class="text-box-container">
+            <span id="name-text-box-size-calibration"></span>
+            <input type="text" id="name-text-box"
+                   oninput="onNameChange();"/>
+            <div id="status-text--valid" class="lexend">Valid!</div>
+            <div id="status-text--uncommon" class="lexend">Uncommon!</div>
+            <div id="status-text--invalid" class="lexend">Invalid</div>
+        </div>
+        <button id="reset-button" class="lexend" onclick="resetOptions();">Reset</button>
+        <button id="randomize-button" class="lexend" onclick="randomizeOptions();">Randomize</button>
     </div>
-    <h2 class="lexend">show potential glyph options for a toki pona name in sitelen pona</h2>
-    <div id="name-input-container">
-        <label for="name-text-box" class="lexend">input your name here for options</label>
-        <div class="row">
-            <div class="text-box-container">
-                <span id="name-text-box-size-calibration"></span>
-                <input type="text" id="name-text-box"
-                       oninput="onNameChange();"/>
-                <div id="status-text--valid" class="lexend">Valid!</div>
-                <div id="status-text--uncommon" class="lexend">Uncommon!</div>
-                <div id="status-text--invalid" class="lexend">Invalid</div>
+</div>
+<div class="results-container">
+    <div class="glyph-select-section">
+        <div class="lexend">select glyphs from the list</div>
+        <div id="glyph-selector">
+            <br>
+            <div id="noun-and-name">
+                <div id="noun" class="no-select">jan</div>
+                <pre id="name-outline"></pre>
             </div>
-            <button id="reset-button" class="lexend" onclick="resetOptions();">Reset</button>
-            <button id="randomize-button" class="lexend" onclick="randomizeOptions();">Randomize</button>
+            <button id="copy-button" class="lexend" onclick="copyGlyphs(   );">
+                Copy
+                <span id="success-popup">Copied to clipboard!</span>
+            </button>
         </div>
     </div>
-    <div class="results-container">
-        <div class="glyph-select-section">
-            <div class="lexend">select glyphs from the list</div>
-            <div id="glyph-selector">
-                <br>
-                <div id="noun-and-name">
-                    <div id="noun" class="no-select">jan</div>
-                    <pre id="name-outline"></pre>
-                </div>
-                <button id="copy-button" class="lexend" onclick="copyGlyphs(   );">
-                    Copy
-                    <span id="success-popup">Copied to clipboard!</span>
-                </button>
+    <div id="definitions-section">
+        <div class="lexend">word definitions</div>
+        <div id="definitions">
+            <div>
+                <div class="word">sinpin</div>
+                <div class="definition">front, wall</div>
             </div>
-        </div>
-        <div id="definitions-section">
-            <div class="lexend">word definitions</div>
-            <div id="definitions">
-                <div>
-                    <div class="word">sinpin</div>
-                    <div class="definition">front, wall</div>
-                </div>
-                <div>
-                    <div class="word">nasin</div>
-                    <div class="definition">method, road</div>
-                </div>
+            <div>
+                <div class="word">nasin</div>
+                <div class="definition">method, road</div>
             </div>
         </div>
     </div>
-</main>
+</div>
 </body>
 </html>

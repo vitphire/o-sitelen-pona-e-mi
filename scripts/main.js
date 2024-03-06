@@ -2,10 +2,6 @@ const SELECTED_GLYPH_INDEX = 1;
 const VISIBLE_GLYPH_COUNT = 4;
 const COLOR_VARIANTS = 9;
 
-function openSettings() {
-    alert('Settings are not implemented yet');
-}
-
 function onNameChange() {
     const textBox = document.getElementById('name-text-box');
     const textBoxContainer = document.getElementById('name-input-container');

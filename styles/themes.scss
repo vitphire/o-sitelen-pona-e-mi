@@ -1,10 +1,11 @@
 @use "pastel";
+@use "_trans" as trans;
 
 // Funky live theme switching
 
 @mixin th($property, $if-light, $if-dark) {
   $path: &;
-  @at-root:root {
+  @at-root :root {
     &:not(.theme-light, .theme-dark) {
       #{$path} {
         @media (prefers-color-scheme: light) {
@@ -28,6 +29,8 @@
       }
     }
   }
+
+  transition: trans.trans(#{$property}, $duration: 0.5, $timing: ease-in-out);
 }
 
 // Letter colors
@@ -138,3 +141,24 @@ button {
 name-letter {
   @include th(border-color, pastel.$black, pastel.$gray);
 }
+
+#settings-scrim {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#settings-window {
+  @include th(background, pastel.$off-white, pastel.$dark-gray);
+  @include th(color, pastel.$black, pastel.$light-gray);
+  @include th(border-color, pastel.$black, pastel.$gray);
+
+  // Checked radio buttons give the option a background color
+  fieldset .option input:checked + label::after {
+    @include th(background, darken(pastel.$off-white, 20%),
+            pastel.$gray);
+  }
+
+  fieldset {
+    @include th(border-color, pastel.$black, pastel.$white);
+  }
+}
+

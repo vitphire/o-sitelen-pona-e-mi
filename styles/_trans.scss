@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/// Transition management in SASS
+/// https://gist.github.com/dinoperovic/9ca903db5e52b3774bbd55fb73c78b01
+///
+/// @example scss
+///   $trans: (
+///     duration: (
+///       "default": 300ms,
+///       "fast": 100ms,
+///       "slow": 800ms,
+///     ),
+///     timing: (
+///       "default": linear,
+///       "in": ease-in,
+///     ),
+///     delay: 100ms,
+///     presets: (
+///       "special": (duration: 3, timing: ease-in-out),
+///       "link": (property: color, preset: "special"),
+///     )
+///   );
+///
+///   transition: trans(all, $duration: "fast", $timing: "in");
+///   transition: trans((opacity, color), $duration: 2);  // increments the default duration.
+///   transition: trans("special");  // load a preset.
+///   transition: trans(color, "slow", $preset: "special");  // preset with overriden property and duration.
+///
+/// Example above could also be achieved using the provided mixin shortcuts:
+///
+/// @example scss
+///   @include trans(all, $duration: "fast", $timing: "in");
+///   @include trans((opacity, color), $duration: 2);
+///   @include trans("special");
+///   @include trans(color, "slow", $preset: "special");
+///
+/// Functions are useful for when multiple transition need to be applied in the same rule:
+///
+/// @example scss
+///   transition: trans(opacity, $duration: 2), trans(color, $preset: "special");
+///
+/// Individual functions and mixins are available for getting a specific rule:
+///
+/// @example scss
+///   transition-duration: trans-duration(2); // increments the default duration.
+///   transition-timing-function: trans-timing("in");  // uses the "in" defined timing.
+///   transition-delay: trans-delay(2);  // increments the default delay.
+///
+/// The same can be achieved using mixins:
+///
+/// @example scss
+///   @include trans-duration(2);
+///   @include trans-timing("in");
+///   @include trans-delay(2);
+
+
+$_trans-defaults: (
+  duration: 300ms,
+  timing: linear,
+  delay: 100ms,
+  presets: (property: all, duration: 1, timing: "default", delay: 0, preset: null),
+);
+
+$trans: () !default;
+
+
+@function _fetch-trans-settings($name) {
+  $settings: map-get(map-merge($_trans-defaults, $trans), $name);
+  // Turn into map with default if single value.
+  @if type-of($settings) != map { $settings: ("default": $settings); }
+  // Add default setting if not set.
+  @if not map-has-key($settings, "default") {
+    $default: ("default": map-get($_trans-defaults, $name));
+    $settings: map-merge($settings, $default);
+  }
+  @return $settings;
+}
+
+@function trans-duration($value: 1) {
+  $settings: _fetch-trans-settings("duration");
+  @if map-has-key($settings, $value) { @return map-get($settings, $value); }
+  @return map-get($settings, "default") * $value;
+}
+
+@function trans-timing($value: "default") {
+  $settings: _fetch-trans-settings("timing");
+  @if map-has-key($settings, $value) { @return map-get($settings, $value); }
+  @return map-get($settings, "default");
+}
+
+@function trans-delay($value: 1) {
+  $settings: _fetch-trans-settings("delay");
+  @if map-has-key($settings, $value) { @return map-get($settings, $value); }
+  @return map-get($settings, "default") * $value;
+}
+
+@function trans-preset($name) {
+  $presets: _fetch-trans-settings("presets");
+  @if map-has-key($presets, $name) {
+    $preset: map-get($presets, $name);
+    // If preset has preset, return merged presets.
+    @if map-get($preset, "preset") {
+      @return map-merge(trans-preset(map-get($preset, "preset")), $preset);
+    }
+    // Apply defaults to empty preset values and return.
+    @return map-merge(map-get($presets, "default"), $preset);
+  }
+  @return null;
+}
+
+@function trans($property: all, $duration: 1, $timing: "default", $delay: 0, $preset: null) {
+  // Handle multiple properties.
+  @if type-of($property) == list {
+    $value: "";
+    @each $prop in $property { $value: $value + trans($prop, $duration, $timing, $delay, $preset) + ", "; }
+    @return unquote(str-slice($value, 0, str-length($value) - 2));
+  }
+  // Handle presets.
+  $preset-data: null;
+  @if $preset { $preset-data: trans-preset($preset); }
+  @else {
+    // Try property as preset, set property to default.
+    $preset-data: trans-preset($property);
+    @if $preset-data { $property: all; }
+  }
+  @if $preset-data {
+    // Load preset and override attrs.
+    @return trans(
+      $property: if($property != all, $property, map-get($preset-data, "property")),
+      $duration: if($duration != 1, $duration, map-get($preset-data, "duration")),
+      $timing: if($timing != "default", $timing, map-get($preset-data, "timing")),
+      $delay: if($delay != 0, $delay, map-get($preset-data, "delay")),
+    );
+  }
+  // Default.
+  @return $property trans-duration($duration) trans-timing($timing) trans-delay($delay);
+}
+
+/// Mixins shortcuts.
+
+@mixin trans-duration($value: 1) { transition-duration: trans-duration($value); }
+@mixin trans-timing($value: "default") { transition-timing-function: trans-timing($value); }
+@mixin trans-delay($value: 1) { transition-delay: trans-delay($value); }
+
+@mixin trans($property: all, $duration: 1, $timing: "default", $delay: 0, $preset: null) {
+  transition: trans($property, $duration, $timing, $delay, $preset);
+}

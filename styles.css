@@ -33,6 +33,9 @@
     '#4B4073', '#3A9E7A', '#C26747',
     '#2D4F94', '#BD9A5C', '#6C3570'
  */
+.letter-fg-color-1 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-1 {
     color: #3d610a;
@@ -50,6 +53,9 @@
   color: #b0d87f;
 }
 
+.letter-bg-color-1 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-1 {
     background: #b0d87f;
@@ -67,6 +73,9 @@
   background: #3d610a;
 }
 
+.letter-fg-color-2 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-2 {
     color: #973030;
@@ -84,6 +93,9 @@
   color: #e66460;
 }
 
+.letter-bg-color-2 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-2 {
     background: #e66460;
@@ -101,6 +113,9 @@
   background: #973030;
 }
 
+.letter-fg-color-3 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-3 {
     color: #0a4885;
@@ -118,6 +133,9 @@
   color: #6f96ec;
 }
 
+.letter-bg-color-3 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-3 {
     background: #6f96ec;
@@ -135,6 +153,9 @@
   background: #0a4885;
 }
 
+.letter-fg-color-4 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-4 {
     color: #594893;
@@ -152,6 +173,9 @@
   color: #a18cd1;
 }
 
+.letter-bg-color-4 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-4 {
     background: #a18cd1;
@@ -169,6 +193,9 @@
   background: #594893;
 }
 
+.letter-fg-color-5 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-5 {
     color: #21634E;
@@ -186,6 +213,9 @@
   color: #74d3ae;
 }
 
+.letter-bg-color-5 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-5 {
     background: #74d3ae;
@@ -203,6 +233,9 @@
   background: #21634E;
 }
 
+.letter-fg-color-6 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-6 {
     color: #8A460F;
@@ -220,6 +253,9 @@
   color: #f0aa7f;
 }
 
+.letter-bg-color-6 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-6 {
     background: #f0aa7f;
@@ -237,6 +273,9 @@
   background: #8A460F;
 }
 
+.letter-fg-color-7 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-7 {
     color: #0b6079;
@@ -254,6 +293,9 @@
   color: #6ec0cf;
 }
 
+.letter-bg-color-7 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-7 {
     background: #6ec0cf;
@@ -271,6 +313,9 @@
   background: #0b6079;
 }
 
+.letter-fg-color-8 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-8 {
     color: #625806;
@@ -288,6 +333,9 @@
   color: #f5eaa6;
 }
 
+.letter-bg-color-8 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-8 {
     background: #f5eaa6;
@@ -305,6 +353,9 @@
   background: #625806;
 }
 
+.letter-fg-color-9 {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-9 {
     color: #7a3e6c;
@@ -322,6 +373,9 @@
   color: #ce7eb3;
 }
 
+.letter-bg-color-9 {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-9 {
     background: #ce7eb3;
@@ -339,6 +393,10 @@
   background: #7a3e6c;
 }
 
+html, body {
+  transition: background 150ms linear 0ms;
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) html, :root:not(.theme-light, .theme-dark) body {
     background: #f6e7cb;
@@ -373,6 +431,9 @@
   color: #dddddd;
 }
 
+button {
+  transition: border-color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) button {
     border-color: #000000;
@@ -390,6 +451,10 @@
   border-color: #404040;
 }
 
+#settings-button {
+  transition: background 150ms linear 0ms;
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-button {
     background: #f6e7cb;
@@ -424,6 +489,9 @@
   color: #dddddd;
 }
 
+#settings-button:hover {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-button:hover {
     background: #eed3a0;
@@ -441,6 +509,9 @@
   background: #373737;
 }
 
+#settings-button:active {
+  transition: background 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-button:active {
     background: #e7bf74;
@@ -491,6 +562,10 @@
   background: #062e56;
 }
 
+#name-input-container .text-box-container {
+  transition: background 150ms linear 0ms;
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #name-input-container .text-box-container {
     background: #f6d0cb;
@@ -527,6 +602,7 @@
 
 #name-text-box {
   color: transparent;
+  transition: caret-color 150ms linear 0ms;
 }
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #name-text-box {
@@ -546,6 +622,7 @@
 }
 
 #name-text-box-size-calibration::before {
+  transition: color 150ms linear 0ms;
   opacity: 0.5;
 }
 @media (prefers-color-scheme: light) {
@@ -565,6 +642,9 @@
   color: #dddddd;
 }
 
+#status-text--valid, #status-text--uncommon {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #status-text--valid, :root:not(.theme-light, .theme-dark) #status-text--uncommon {
     color: #0c4200;
@@ -582,6 +662,9 @@
   color: #74d3ae;
 }
 
+.valid .text-box-container, .uncommon .text-box-container {
+  transition: border-color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .valid .text-box-container, :root:not(.theme-light, .theme-dark) .uncommon .text-box-container {
     border-color: #0c4200;
@@ -599,6 +682,9 @@
   border-color: #74d3ae;
 }
 
+#status-text--invalid {
+  transition: color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #status-text--invalid {
     color: #973030;
@@ -616,6 +702,9 @@
   color: #e66460;
 }
 
+.invalid .text-box-container {
+  transition: border-color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .invalid .text-box-container {
     border-color: #973030;
@@ -634,6 +723,7 @@
 }
 
 #success-popup {
+  transition: background 150ms linear 0ms;
   color: #ffffff;
 }
 @media (prefers-color-scheme: light) {
@@ -653,6 +743,9 @@
   background: rgba(42, 42, 42, 0.8);
 }
 
+name-letter {
+  transition: border-color 150ms linear 0ms;
+}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) name-letter {
     border-color: #000000;
@@ -670,7 +763,107 @@
   border-color: #404040;
 }
 
-.no-select, .results-container .glyph-select-section #glyph-selector {
+#settings-scrim {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#settings-window {
+  transition: background 150ms linear 0ms;
+  transition: color 150ms linear 0ms;
+  transition: border-color 150ms linear 0ms;
+}
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-light, .theme-dark) #settings-window {
+    background: #f6e7cb;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light, .theme-dark) #settings-window {
+    background: #2a2a2a;
+  }
+}
+:root.theme-light #settings-window {
+  background: #f6e7cb;
+}
+:root.theme-dark #settings-window {
+  background: #2a2a2a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-light, .theme-dark) #settings-window {
+    color: #000000;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light, .theme-dark) #settings-window {
+    color: #dddddd;
+  }
+}
+:root.theme-light #settings-window {
+  color: #000000;
+}
+:root.theme-dark #settings-window {
+  color: #dddddd;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-light, .theme-dark) #settings-window {
+    border-color: #000000;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light, .theme-dark) #settings-window {
+    border-color: #404040;
+  }
+}
+:root.theme-light #settings-window {
+  border-color: #000000;
+}
+:root.theme-dark #settings-window {
+  border-color: #404040;
+}
+
+#settings-window fieldset .option input:checked + label::after {
+  transition: background 150ms linear 0ms;
+}
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + label::after {
+    background: #e7bf74;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + label::after {
+    background: #404040;
+  }
+}
+:root.theme-light #settings-window fieldset .option input:checked + label::after {
+  background: #e7bf74;
+}
+:root.theme-dark #settings-window fieldset .option input:checked + label::after {
+  background: #404040;
+}
+
+#settings-window fieldset {
+  transition: border-color 150ms linear 0ms;
+}
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset {
+    border-color: #000000;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset {
+    border-color: #ffffff;
+  }
+}
+:root.theme-light #settings-window fieldset {
+  border-color: #000000;
+}
+:root.theme-dark #settings-window fieldset {
+  border-color: #ffffff;
+}
+
+.no-select, #settings-window #settings-close-button, .results-container .glyph-select-section #glyph-selector {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -696,13 +889,13 @@ body {
   margin: 32px 32px;
 }
 
-h2 {
-  font-weight: 400;
-}
-
 h1 {
   font-weight: 400;
   font-size: 2.4em;
+}
+
+h2 {
+  font-weight: 400;
 }
 
 button {
@@ -918,6 +1111,113 @@ button {
   content: "-";
   margin-left: 0.2em;
   margin-right: 0.36em;
+}
+
+#settings-window {
+  margin: 10%;
+  min-width: 60px;
+  min-height: 60px;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 24px;
+  padding: 30px;
+}
+#settings-window-container {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+@keyframes show {
+  from {
+    height: 0;
+    width: 0;
+    top: 120%;
+    left: 50%;
+  }
+}
+#settings-window-container.show {
+  display: revert;
+  animation: show 0.3s ease-in-out;
+}
+#settings-window-container #settings-scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+#settings-window #settings-close-button {
+  float: right;
+  font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+  font-size: 48px;
+  width: 56px;
+  height: 56px;
+  margin: -12px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1;
+  cursor: pointer;
+}
+#settings-window > h1 {
+  font-size: 2.4em;
+  margin: 0 0 16px 0;
+}
+#settings-window .setting {
+  margin-bottom: 24px;
+}
+#settings-window .setting .sp {
+  font-size: 2em;
+  font-family: "sitelen-seli-kiwen--asuki", serif;
+}
+#settings-window .setting fieldset {
+  border-radius: 24px;
+  border-width: 2px;
+  border-style: solid;
+}
+#settings-window .setting fieldset legend {
+  margin-left: 12px;
+}
+#settings-window .setting fieldset, #settings-window .setting fieldset .option, #settings-window .setting fieldset label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#settings-window .setting fieldset .option {
+  padding: 0 12px 0 8px;
+  position: relative;
+  z-index: 2;
+}
+#settings-window .setting fieldset .option label > span:nth-child(2) {
+  margin-left: 6px;
+}
+#settings-window .setting fieldset .option label::before {
+  font-size: 2em;
+  font-family: "sitelen-seli-kiwen--asuki", serif;
+}
+#settings-window .setting fieldset .option input:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 24px;
+  z-index: -1;
+}
+#settings-window .setting fieldset .option input:checked + label::before {
+  content: "o";
+}
+#settings-window .setting fieldset .option input[type=radio] {
+  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

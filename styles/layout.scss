@@ -26,13 +26,13 @@ body {
   margin: 32px 32px;
 }
 
-h2 {
-  font-weight: 400;
-}
-
 h1 {
   font-weight: 400;
   font-size: 2.4em;
+}
+
+h2 {
+  font-weight: 400;
 }
 
 button {
@@ -290,6 +290,136 @@ button {
             margin-left: 0.2em;
             margin-right: 0.36em;
           }
+        }
+      }
+    }
+  }
+}
+
+#settings-window {
+  &-container {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    // Center the window
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+
+    @keyframes show {
+      from {
+        height: 0;
+        width: 0;
+        top: 120%;
+        left: 50%;
+      }
+    }
+
+    &.show {
+      display: revert;
+      animation: show 0.3s ease-in-out;
+    }
+
+    #settings-scrim {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+  }
+
+  #settings-close-button {
+    @extend .no-select;
+    float: right;
+    font-family: "sitelen-seli-kiwen-mono--asuki", serif;
+    font-size: 48px;
+    width: 56px;
+    height: 56px;
+    margin: -12px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  margin: 10%;
+  min-width: 60px;
+  min-height: 60px;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 24px;
+  padding: 30px;
+
+  & > h1 {
+    font-size: 2.4em;
+    margin: 0 0 16px 0;
+  }
+
+  .setting {
+    margin-bottom: 24px;
+
+    .sp {
+      font-size: 2em;
+      font-family: "sitelen-seli-kiwen--asuki", serif;
+    }
+
+    fieldset {
+      border-radius: 24px;
+      border-width: 2px;
+      border-style: solid;
+
+      legend {
+        margin-left: 12px;
+      }
+
+      &, & .option, & label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .option {
+        padding: 0 12px 0 8px;
+        position: relative;
+        z-index: 2;
+
+        label {
+          &>span:nth-child(2) {
+            margin-left: 6px;
+          }
+
+          &::before {
+            font-size: 2em;
+            font-family: "sitelen-seli-kiwen--asuki", serif;
+          }
+        }
+
+        input:checked + label {
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 24px;
+            z-index: -1;
+          }
+
+          &::before {
+            content: "o";
+          }
+        }
+
+        input[type="radio"] {
+          display: none;
         }
       }
     }

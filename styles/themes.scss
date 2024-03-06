@@ -152,7 +152,7 @@ name-letter {
   @include th(border-color, pastel.$black, pastel.$gray);
 
   // Checked radio buttons give the option a background color
-  fieldset .option input:checked + label::after {
+  fieldset .option input:checked + .label-text::after {
     @include th(background, darken(pastel.$off-white, 20%),
             pastel.$gray);
   }

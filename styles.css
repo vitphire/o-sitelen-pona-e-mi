@@ -823,23 +823,23 @@ name-letter {
   border-color: #404040;
 }
 
-#settings-window fieldset .option input:checked + label::after {
+#settings-window fieldset .option input:checked + .label-text::after {
   transition: background 150ms linear 0ms;
 }
 @media (prefers-color-scheme: light) {
-  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + label::after {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + .label-text::after {
     background: #e7bf74;
   }
 }
 @media (prefers-color-scheme: dark) {
-  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + label::after {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + .label-text::after {
     background: #404040;
   }
 }
-:root.theme-light #settings-window fieldset .option input:checked + label::after {
+:root.theme-light #settings-window fieldset .option input:checked + .label-text::after {
   background: #e7bf74;
 }
-:root.theme-dark #settings-window fieldset .option input:checked + label::after {
+:root.theme-dark #settings-window fieldset .option input:checked + .label-text::after {
   background: #404040;
 }
 
@@ -1185,7 +1185,7 @@ button {
 #settings-window .setting fieldset legend {
   margin-left: 12px;
 }
-#settings-window .setting fieldset, #settings-window .setting fieldset .option, #settings-window .setting fieldset label {
+#settings-window .setting fieldset, #settings-window .setting fieldset .option, #settings-window .setting fieldset .label-text {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -1196,14 +1196,14 @@ button {
   position: relative;
   z-index: 2;
 }
-#settings-window .setting fieldset .option label > span:nth-child(2) {
+#settings-window .setting fieldset .option .label-text > span:nth-child(2) {
   margin-left: 6px;
 }
-#settings-window .setting fieldset .option label::before {
+#settings-window .setting fieldset .option .label-text::before {
   font-size: 2em;
   font-family: "sitelen-seli-kiwen--asuki", serif;
 }
-#settings-window .setting fieldset .option input:checked + label::after {
+#settings-window .setting fieldset .option input:checked + .label-text::after {
   content: "";
   position: absolute;
   top: 0;
@@ -1213,7 +1213,7 @@ button {
   border-radius: 24px;
   z-index: -1;
 }
-#settings-window .setting fieldset .option input:checked + label::before {
+#settings-window .setting fieldset .option input:checked + .label-text::before {
   content: "o";
 }
 #settings-window .setting fieldset .option input[type=radio] {

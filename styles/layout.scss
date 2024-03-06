@@ -378,7 +378,7 @@ button {
         margin-left: 12px;
       }
 
-      &, & .option, & label {
+      &, & .option, & .label-text {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -390,7 +390,7 @@ button {
         position: relative;
         z-index: 2;
 
-        label {
+        .label-text {
           &>span:nth-child(2) {
             margin-left: 6px;
           }
@@ -401,7 +401,7 @@ button {
           }
         }
 
-        input:checked + label {
+        input:checked + .label-text {
           &::after {
             content: "";
             position: absolute;

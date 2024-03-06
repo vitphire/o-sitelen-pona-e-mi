@@ -33,9 +33,6 @@
     '#4B4073', '#3A9E7A', '#C26747',
     '#2D4F94', '#BD9A5C', '#6C3570'
  */
-.letter-fg-color-1 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-1 {
     color: #3d610a;
@@ -53,9 +50,6 @@
   color: #b0d87f;
 }
 
-.letter-bg-color-1 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-1 {
     background: #b0d87f;
@@ -73,9 +67,6 @@
   background: #3d610a;
 }
 
-.letter-fg-color-2 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-2 {
     color: #973030;
@@ -93,9 +84,6 @@
   color: #e66460;
 }
 
-.letter-bg-color-2 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-2 {
     background: #e66460;
@@ -113,9 +101,6 @@
   background: #973030;
 }
 
-.letter-fg-color-3 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-3 {
     color: #0a4885;
@@ -133,9 +118,6 @@
   color: #6f96ec;
 }
 
-.letter-bg-color-3 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-3 {
     background: #6f96ec;
@@ -153,9 +135,6 @@
   background: #0a4885;
 }
 
-.letter-fg-color-4 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-4 {
     color: #594893;
@@ -173,9 +152,6 @@
   color: #a18cd1;
 }
 
-.letter-bg-color-4 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-4 {
     background: #a18cd1;
@@ -193,9 +169,6 @@
   background: #594893;
 }
 
-.letter-fg-color-5 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-5 {
     color: #21634E;
@@ -213,9 +186,6 @@
   color: #74d3ae;
 }
 
-.letter-bg-color-5 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-5 {
     background: #74d3ae;
@@ -233,9 +203,6 @@
   background: #21634E;
 }
 
-.letter-fg-color-6 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-6 {
     color: #8A460F;
@@ -253,9 +220,6 @@
   color: #f0aa7f;
 }
 
-.letter-bg-color-6 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-6 {
     background: #f0aa7f;
@@ -273,9 +237,6 @@
   background: #8A460F;
 }
 
-.letter-fg-color-7 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-7 {
     color: #0b6079;
@@ -293,9 +254,6 @@
   color: #6ec0cf;
 }
 
-.letter-bg-color-7 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-7 {
     background: #6ec0cf;
@@ -313,9 +271,6 @@
   background: #0b6079;
 }
 
-.letter-fg-color-8 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-8 {
     color: #625806;
@@ -333,9 +288,6 @@
   color: #f5eaa6;
 }
 
-.letter-bg-color-8 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-8 {
     background: #f5eaa6;
@@ -353,9 +305,6 @@
   background: #625806;
 }
 
-.letter-fg-color-9 {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-fg-color-9 {
     color: #7a3e6c;
@@ -373,9 +322,6 @@
   color: #ce7eb3;
 }
 
-.letter-bg-color-9 {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .letter-bg-color-9 {
     background: #ce7eb3;
@@ -393,10 +339,6 @@
   background: #7a3e6c;
 }
 
-html, body {
-  transition: background 150ms linear 0ms;
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) html, :root:not(.theme-light, .theme-dark) body {
     background: #f6e7cb;
@@ -431,9 +373,6 @@ html, body {
   color: #dddddd;
 }
 
-button {
-  transition: border-color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) button {
     border-color: #000000;
@@ -451,10 +390,6 @@ button {
   border-color: #404040;
 }
 
-#settings-button {
-  transition: background 150ms linear 0ms;
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-button {
     background: #f6e7cb;
@@ -489,9 +424,6 @@ button {
   color: #dddddd;
 }
 
-#settings-button:hover {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-button:hover {
     background: #eed3a0;
@@ -509,9 +441,6 @@ button {
   background: #373737;
 }
 
-#settings-button:active {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-button:active {
     background: #e7bf74;
@@ -562,10 +491,6 @@ button {
   background: #062e56;
 }
 
-#name-input-container .text-box-container {
-  transition: background 150ms linear 0ms;
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #name-input-container .text-box-container {
     background: #f6d0cb;
@@ -602,7 +527,6 @@ button {
 
 #name-text-box {
   color: transparent;
-  transition: caret-color 150ms linear 0ms;
 }
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #name-text-box {
@@ -622,7 +546,6 @@ button {
 }
 
 #name-text-box-size-calibration::before {
-  transition: color 150ms linear 0ms;
   opacity: 0.5;
 }
 @media (prefers-color-scheme: light) {
@@ -642,9 +565,6 @@ button {
   color: #dddddd;
 }
 
-#status-text--valid, #status-text--uncommon {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #status-text--valid, :root:not(.theme-light, .theme-dark) #status-text--uncommon {
     color: #0c4200;
@@ -662,9 +582,6 @@ button {
   color: #74d3ae;
 }
 
-.valid .text-box-container, .uncommon .text-box-container {
-  transition: border-color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .valid .text-box-container, :root:not(.theme-light, .theme-dark) .uncommon .text-box-container {
     border-color: #0c4200;
@@ -682,9 +599,6 @@ button {
   border-color: #74d3ae;
 }
 
-#status-text--invalid {
-  transition: color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #status-text--invalid {
     color: #973030;
@@ -702,9 +616,6 @@ button {
   color: #e66460;
 }
 
-.invalid .text-box-container {
-  transition: border-color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) .invalid .text-box-container {
     border-color: #973030;
@@ -723,7 +634,6 @@ button {
 }
 
 #success-popup {
-  transition: background 150ms linear 0ms;
   color: #ffffff;
 }
 @media (prefers-color-scheme: light) {
@@ -743,9 +653,6 @@ button {
   background: rgba(42, 42, 42, 0.8);
 }
 
-name-letter {
-  transition: border-color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) name-letter {
     border-color: #000000;
@@ -767,11 +674,6 @@ name-letter {
   background: rgba(0, 0, 0, 0.5);
 }
 
-#settings-window {
-  transition: background 150ms linear 0ms;
-  transition: color 150ms linear 0ms;
-  transition: border-color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-window {
     background: #f6e7cb;
@@ -823,9 +725,6 @@ name-letter {
   border-color: #404040;
 }
 
-#settings-window fieldset .option input:checked + .label-text::after {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + .label-text::after {
     background: #e7bf74;
@@ -843,9 +742,6 @@ name-letter {
   background: #4d4d4d;
 }
 
-#settings-window fieldset .option:hover .label-text::after {
-  transition: background 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-window fieldset .option:hover .label-text::after {
     background: #edcf97;
@@ -863,9 +759,6 @@ name-letter {
   background: #3b3b3b;
 }
 
-#settings-window fieldset {
-  transition: border-color 150ms linear 0ms;
-}
 @media (prefers-color-scheme: light) {
   :root:not(.theme-light, .theme-dark) #settings-window fieldset {
     border-color: #000000;

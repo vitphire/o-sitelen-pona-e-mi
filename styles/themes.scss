@@ -1,5 +1,4 @@
 @use "pastel";
-@use "_trans" as trans;
 
 // Funky live theme switching
 
@@ -29,8 +28,6 @@
       }
     }
   }
-
-  transition: trans.trans(#{$property}, $duration: 0.5, $timing: ease-in-out);
 }
 
 // Letter colors

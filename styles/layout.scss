@@ -391,7 +391,7 @@ button {
         z-index: 2;
 
         .label-text {
-          &>span:nth-child(2) {
+          & > span:nth-child(2) {
             margin-left: 6px;
           }
 

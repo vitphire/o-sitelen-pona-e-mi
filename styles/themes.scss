@@ -2,25 +2,6 @@
 
 // Funky live theme switching
 
-:root {
-  &.theme-system {
-    @media (prefers-color-scheme: dark) {
-      --theme: "dark";
-    }
-    @media (prefers-color-scheme: light) {
-      --theme: "light";
-    }
-  }
-
-  &.theme-light {
-    --theme: "light";
-  }
-
-  &.theme-dark {
-    --theme: "dark";
-  }
-}
-
 @mixin th($property, $if-light, $if-dark) {
   $path: &;
   @at-root:root {
@@ -51,25 +32,27 @@
 
 // Letter colors
 
-$letter-colors: pastel.$lime, pastel.$dark-lime,
-pastel.$red, pastel.$dark-red,
-pastel.$blue, pastel.$dark-blue,
-pastel.$purple, pastel.$dark-purple,
-pastel.$green, pastel.$dark-green,
-pastel.$orange, pastel.$dark-orange,
-pastel.$blue-2, pastel.$dark-blue-2,
-pastel.$yellow, pastel.$dark-yellow,
-pastel.$magenta, pastel.$dark-magenta;
+$letter-colors: pastel.$lime pastel.$dark-lime,
+pastel.$red pastel.$dark-red,
+pastel.$blue pastel.$dark-blue,
+pastel.$purple pastel.$dark-purple,
+pastel.$green pastel.$dark-green,
+pastel.$orange pastel.$dark-orange,
+pastel.$blue-2 pastel.$dark-blue-2,
+pastel.$yellow pastel.$dark-yellow,
+pastel.$magenta pastel.$dark-magenta;
 
-@for $i from 1 through 9 {
+@for $i from 1 through length($letter-colors) {
+  $color: nth($letter-colors, $i);
+  $color-light: nth($color, 1);
+  $color-dark: nth($color, 2);
   .letter-fg-color-#{$i} {
-    @include th(color, nth($letter-colors, $i * 2), nth($letter-colors, $i * 2 - 1));
+    @include th(color, $color-dark, $color-light);
   }
   .letter-bg-color-#{$i} {
-    @include th(background, nth($letter-colors, $i * 2 - 1), nth($letter-colors, $i * 2));
+    @include th(background, $color-light, $color-dark);
   }
 }
-
 
 html, body {
   @include th(background, pastel.$off-white, pastel.$dark-gray-2);
@@ -100,7 +83,6 @@ button {
 @each $button, $color in "reset" pastel.$dark-red,
 "randomize" pastel.$dark-purple,
 "copy" pastel.$dark-blue {
-  @debug $button;
   ##{$button}-button {
     background: $color;
     color: pastel.$white;

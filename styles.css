@@ -833,14 +833,34 @@ name-letter {
 }
 @media (prefers-color-scheme: dark) {
   :root:not(.theme-light, .theme-dark) #settings-window fieldset .option input:checked + .label-text::after {
-    background: #404040;
+    background: #4d4d4d;
   }
 }
 :root.theme-light #settings-window fieldset .option input:checked + .label-text::after {
   background: #e7bf74;
 }
 :root.theme-dark #settings-window fieldset .option input:checked + .label-text::after {
-  background: #404040;
+  background: #4d4d4d;
+}
+
+#settings-window fieldset .option:hover .label-text::after {
+  transition: background 150ms linear 0ms;
+}
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option:hover .label-text::after {
+    background: #edcf97;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light, .theme-dark) #settings-window fieldset .option:hover .label-text::after {
+    background: #3b3b3b;
+  }
+}
+:root.theme-light #settings-window fieldset .option:hover .label-text::after {
+  background: #edcf97;
+}
+:root.theme-dark #settings-window fieldset .option:hover .label-text::after {
+  background: #3b3b3b;
 }
 
 #settings-window fieldset {
@@ -1203,7 +1223,7 @@ button {
   font-size: 2em;
   font-family: "sitelen-seli-kiwen--asuki", serif;
 }
-#settings-window .setting fieldset .option input:checked + .label-text::after {
+#settings-window .setting fieldset .option .label-text::after {
   content: "";
   position: absolute;
   top: 0;

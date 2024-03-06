@@ -399,9 +399,7 @@ button {
             font-size: 2em;
             font-family: "sitelen-seli-kiwen--asuki", serif;
           }
-        }
 
-        input:checked + .label-text {
           &::after {
             content: "";
             position: absolute;
@@ -412,6 +410,9 @@ button {
             border-radius: 24px;
             z-index: -1;
           }
+        }
+
+        input:checked + .label-text {
 
           &::before {
             content: "o";

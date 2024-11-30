@@ -27,7 +27,7 @@ const Dictionary = {
     // TODO: Linku integration
     definitions: new Map(Object.entries({
         "a": "emphasis particle",
-        "akesi": "reptile, amphibian",
+        "akesi2": "reptile, amphibian",
         "ala": "no, not, zero",
         "alasa": "hunt, attempt",
         "ale": "all, everything, 100",
